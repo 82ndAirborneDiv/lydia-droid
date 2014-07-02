@@ -5,6 +5,9 @@ import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -15,7 +18,7 @@ import android.support.v4.widget.DrawerLayout;
 
 
 public class MainActivity extends Activity
-        implements NavigationDrawerFragment.NavigationDrawerCallbacks {
+        implements NavigationDrawerFragment.NavigationDrawerCallbacks, ConditionPickFragment.OnConditionSelectionListener {
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -128,6 +131,7 @@ public class MainActivity extends Activity
         return super.onOptionsItemSelected(item);
     }
 
+
     /**
      * A placeholder fragment containing a simple view.
      */
@@ -168,4 +172,8 @@ public class MainActivity extends Activity
         }
     }
 
+    @Override
+    public void onConditionSelection(Uri uri) {
+
+    }
 }
