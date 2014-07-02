@@ -250,8 +250,8 @@ public class NavigationDrawerFragment extends Fragment {
             return true;
         }
 
-        if (item.getItemId() == R.id.action_example) {
-            Toast.makeText(getActivity(), "Example action.", Toast.LENGTH_SHORT).show();
+        if (item.getItemId() == R.id.action_version) {
+            Toast.makeText(getActivity(), "STD TX Guide Version 0.1.1", Toast.LENGTH_LONG).show();
             return true;
         }
 
