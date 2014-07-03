@@ -35,6 +35,7 @@ public class MainActivity extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getFragmentManager().findFragmentById(R.id.navigation_drawer);
         mTitle = getTitle();
@@ -173,7 +174,21 @@ public class MainActivity extends Activity
     }
 
     @Override
-    public void onConditionSelection(Uri uri) {
+    public void onConditionSelection(int position) {
+
+        // Create new fragment and transaction
+        Fragment newFragment = new ConditionTreatment();
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+        // Replace whatever is in the fragment_container view with this fragment,
+        // and add the transaction to the back stack
+        transaction.replace(R.id.container, newFragment);
+        transaction.addToBackStack(null);
+
+        // Commit the transaction
+        transaction.commit();
 
     }
+
+
 }

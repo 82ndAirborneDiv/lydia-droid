@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 public class ConditionPickFragment extends ListFragment {
 
+    private OnConditionSelectionListener mListener;
+
     String[] conditions = new String[] {
             "Assault - Sexual",
             "Bacterial Vaginosis",
@@ -77,24 +79,48 @@ public class ConditionPickFragment extends ListFragment {
         Toast.makeText(this.getActivity(),
                 "Click ListItem Number " + position, Toast.LENGTH_SHORT)
                 .show();
-        // Create new fragment and transaction
-        Fragment newFragment = new ConditionTreatment();
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        if (mListener != null) {
+            mListener.onConditionSelection(position);
+        }
 
-// Replace whatever is in the fragment_container view with this fragment,
-// and add the transaction to the back stack
-        transaction.replace(R.id.container, newFragment);
-        transaction.addToBackStack(null);
 
-// Commit the transaction
-        transaction.commit();
 
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+
+        // This makes sure that the container activity has implemented
+        // the callback interface. If not, it throws an exception
+        try {
+            mListener = (OnConditionSelectionListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString()
+                    + " must implement OnConditionSelectionListener");
+        }
+    }
+
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
     }
 
     public interface OnConditionSelectionListener {
         // TODO: Update argument type and name
-        public void onConditionSelection(Uri uri);
+        public void onConditionSelection(int position);
     }
+
+    // TODO: Rename method, update argument and hook method into UI event
+    public void onButtonPressed(int position) {
+        if (mListener != null) {
+            mListener.onConditionSelection(position);
+        }
+    }
+
+
 
 
 
