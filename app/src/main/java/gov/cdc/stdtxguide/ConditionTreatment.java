@@ -7,6 +7,8 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
+import android.webkit.WebViewFragment;
 
 
 
@@ -64,8 +66,14 @@ public class ConditionTreatment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_condition_treatment, container, false);
-    }
+        View v = inflater.inflate(R.layout.fragment_condition_treatment, container, false);
 
+        WebView wv = (WebView) v.findViewById(R.id.webView);
+        wv.getSettings().setJavaScriptEnabled(false);
+        wv.loadUrl("file:///android_asset/c1-r.html");
+
+        return v;
+
+    }
 
 }

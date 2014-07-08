@@ -76,9 +76,9 @@ public class ConditionPickFragment extends ListFragment {
 //        Toast.makeText(this.getActivity().getApplicationContext(),
 //                "Click ListItem Number " + position, Toast.LENGTH_SHORT)
 //                .show();
-        Toast.makeText(this.getActivity(),
-                "Click ListItem Number " + position, Toast.LENGTH_SHORT)
-                .show();
+       // Toast.makeText(this.getActivity(),
+       //         "Click ListItem Number " + position, Toast.LENGTH_SHORT)
+       //         .show();
         if (mListener != null) {
             mListener.onConditionSelection(position);
         }
