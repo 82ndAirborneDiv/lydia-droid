@@ -64,6 +64,7 @@ public class MainActivity extends Activity
                 fragmentManager.beginTransaction()
                         .replace(R.id.container, GuidelinesFragment.newInstance(position + 1))
                         .commit();
+
                 break;
             }
             default: {
@@ -156,6 +157,7 @@ public class MainActivity extends Activity
         }
 
         public PlaceholderFragment() {
+
         }
 
         @Override

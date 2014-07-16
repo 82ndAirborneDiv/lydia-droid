@@ -7,7 +7,7 @@ import android.app.Fragment;
  */
 public class BaseFragment extends Fragment {
 
-        public static final String ARG_SECTION_NUMBER = "ARG_SECTION_NUMBER";
+        public static final String ARG_SECTION_NUMBER = "section_number";
 
         /**
          * Default empty constructor

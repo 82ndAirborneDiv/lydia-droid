@@ -16,6 +16,12 @@ import android.widget.Toast;
 
 public class ConditionPickFragment extends ListFragment {
 
+    /**
+     * The fragment argument representing the section number for this
+     * fragment.
+     */
+    private static final String ARG_SECTION_NUMBER = "section_number";
+
     private OnConditionSelectionListener mListener;
 
     String[] conditions = new String[] {
@@ -83,13 +89,13 @@ public class ConditionPickFragment extends ListFragment {
             mListener.onConditionSelection(position);
         }
 
-
-
     }
 
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
+        ((MainActivity) activity).onSectionAttached(
+                getArguments().getInt(ARG_SECTION_NUMBER));
 
         // This makes sure that the container activity has implemented
         // the callback interface. If not, it throws an exception
@@ -119,9 +125,5 @@ public class ConditionPickFragment extends ListFragment {
             mListener.onConditionSelection(position);
         }
     }
-
-
-
-
 
 }

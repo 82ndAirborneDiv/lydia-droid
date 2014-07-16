@@ -1,5 +1,6 @@
 package gov.cdc.stdtxguide;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
@@ -20,6 +21,15 @@ public class GuidelinesFragment extends BaseFragment {
         fragment.setArguments(args);
         return fragment;
     }
+
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        ((MainActivity) activity).onSectionAttached(
+                getArguments().getInt(ARG_SECTION_NUMBER));
+
+     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
