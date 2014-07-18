@@ -107,6 +107,12 @@ public class ConditionPickFragment extends ListFragment {
         }
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+
+
+    }
 
     @Override
     public void onDetach() {

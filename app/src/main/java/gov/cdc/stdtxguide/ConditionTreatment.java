@@ -70,7 +70,7 @@ public class ConditionTreatment extends Fragment {
 
         WebView wv = (WebView) v.findViewById(R.id.webView);
         wv.getSettings().setJavaScriptEnabled(false);
-        wv.loadUrl("file:///android_asset/c1-r.html");
+        wv.loadUrl("file:///android_asset/content/c1-r.html");
 
         return v;
 
