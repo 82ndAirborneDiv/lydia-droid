@@ -19,13 +19,13 @@ public class ConditionContent {
 
     public static final String CONTENT_MAP_FILENAME = "content/condition-content-map.txt";
     private Context context;
-    private List conditionList;
+    private Condition rootCondition;
 
     public ConditionContent(Context context) {
 
         this.context = context;
         InputStream stream = readContentMapFromFile();
-        this.conditionList = readJsonStream(stream);
+        this.rootCondition = readJsonStream(stream);
 
     }
 
@@ -54,7 +54,7 @@ public class ConditionContent {
             JSONObject jsonObject = new JSONObject(jsonString);
             int size = jsonObject.length();
 
-            Log.d("ConditionContent", "Content Map JSON Array length = " + String.valueOf(size));
+            //Log.d("ConditionContent", "Content Map JSON Array length = " + String.valueOf(size));
             return true;
 
             //JSONObject condition = obj.getJSONObject("0");
@@ -65,38 +65,39 @@ public class ConditionContent {
         }
     }
 
-    public List readJsonStream(InputStream in)  {
+    public Condition readJsonStream(InputStream in)  {
 
         JsonReader reader = null;
-        List conditionsArray = null;
+        Condition rootCondition = null;
 
         try {
             reader = new JsonReader(new InputStreamReader(in, "UTF-8"));
-            conditionsArray = readConditionsArray(reader);
+            rootCondition = readRootCondition(reader);
             reader.close();
 
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-        return conditionsArray;
+        return rootCondition;
     }
 
-    public List readConditionsArray(JsonReader reader) throws IOException {
-        List conditions = new ArrayList();
+    public Condition readRootCondition(JsonReader reader) throws IOException {
+
+        Condition rootCondition = null;
         reader.setLenient(true);
 
-        reader.beginArray();
-        while (reader.hasNext()) {
-            conditions.add(readCondition(reader));
+        if (reader.hasNext() && reader.peek() != JsonToken.END_DOCUMENT) {
+            rootCondition = readCondition(reader);
         }
-        reader.endArray();
-        return conditions;
+        return rootCondition;
+
     }
 
     public Condition readCondition(JsonReader reader) throws IOException {
         int id = 255;
         String text = null;
         boolean hasChildren = false;
+        List childrenConditions = null;
 
         reader.beginObject();
         while (reader.hasNext()) {
@@ -106,41 +107,39 @@ public class ConditionContent {
                     reader.skipValue();
                 else {
                     id = reader.nextInt();
-                    Log.d("ConditionContent", "For JSON key parent value = " + Integer.toString(id));
+                    //Log.d("ConditionContent", "For JSON key parent value = " + Integer.toString(id));
                 }
             } else if (name.equals("text")) {
                 text = reader.nextString();
-                Log.d("ConditionContent", "For JSON key text value = " + text);
+                //Log.d("ConditionContent", "For JSON key text value = " + text);
             }
             else if (name.equals("hasChildren")) {
                 hasChildren = reader.nextBoolean();
-                Log.d("ConditionContent", "For JSON key hasChildren value = " + hasChildren);
+                //Log.d("ConditionContent", "For JSON key hasChildren value = " + hasChildren);
             }
             else if (name.equals("children") &&  reader.peek() != JsonToken.NULL) {
-                reader.beginArray();
-                while (reader.hasNext()) {
-                    Log.d("ConditionContent", "Making recursive readCondition() call for children.");
-                    readCondition(reader);
-                }
-                reader.endArray();
+                childrenConditions = readChildrenArray(reader);
             }
             else {
                 reader.skipValue();
             }
         }
         reader.endObject();
-        return new Condition(id, text);
+        return new Condition(id, text, childrenConditions);
     }
 
-    public List readDoublesArray(JsonReader reader) throws IOException {
-        List doubles = new ArrayList();
+    public List readChildrenArray(JsonReader reader) throws IOException {
 
+        List childrenConditions = new ArrayList();
         reader.beginArray();
         while (reader.hasNext()) {
-            doubles.add(reader.nextDouble());
+            //Log.d("ConditionContent", "Making recursive readCondition() call for children.");
+            childrenConditions.add(readCondition(reader));
         }
         reader.endArray();
-        return doubles;
+
+        return childrenConditions;
+
     }
 
 }
