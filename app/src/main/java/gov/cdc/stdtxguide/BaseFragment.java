@@ -7,13 +7,14 @@ import android.app.Fragment;
  */
 public class BaseFragment extends Fragment {
 
-        public static final String ARG_SECTION_NUMBER = "section_number";
+    public static final String ARG_SECTION_NUMBER = "section_number";
+    public static final String ARG_CONDITION_CONTENT = "condition_content";
 
-        /**
-         * Default empty constructor
-         */
-        public BaseFragment(){
-            //
-        }
+    /**
+     * Default empty constructor
+     */
+    public BaseFragment(){
+        //
+    }
 
 }

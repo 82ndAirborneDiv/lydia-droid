@@ -24,6 +24,9 @@ public class MainActivity extends Activity
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
     private NavigationDrawerFragment mNavigationDrawerFragment;
+    private ConditionPickFragment prevCondPickFragment, currCondPickFragment;
+    private static int lastPosition;
+    private ConditionContent conditionContent;
 
 
     /**
@@ -33,6 +36,8 @@ public class MainActivity extends Activity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        this.conditionContent = new ConditionContent(this.getApplicationContext());
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -46,7 +51,7 @@ public class MainActivity extends Activity
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
 
-        ConditionContent content = new ConditionContent(this.getApplicationContext());
+
     }
 
     @Override
@@ -55,12 +60,16 @@ public class MainActivity extends Activity
         FragmentManager fragmentManager = getFragmentManager();
         BaseFragment targetFragment = null;
 
+
         // Populate the fragment
         switch (position) {
             case 0: {
                 fragmentManager.beginTransaction()
-                        .replace(R.id.container, ConditionPickFragment.newInstance(position + 1))
+                        .replace(R.id.container, ConditionPickFragment.newInstance(position + 1,conditionContent.getChildContentTitles()))
                         .commit();
+//                fragmentManager.beginTransaction()
+//                        .replace(R.id.container, ConditionPickFragment.newInstance(conditionContent.getChildContentTitles()))
+//                        .commit();
                 break;
             }
             case 1: {
@@ -178,22 +187,40 @@ public class MainActivity extends Activity
         }
     }
 
+//    @Override
+//    public void onConditionSelection(int position) {
+//
+//        // Create new fragment and transaction
+//        Fragment newFragment = new ConditionTreatment();
+//        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+//
+//        // Replace whatever is in the fragment_container view with this fragment,
+//        // and add the transaction to the back stack
+//        transaction.replace(R.id.container, newFragment);
+//        transaction.addToBackStack(null);
+//
+//        // Commit the transaction
+//        transaction.commit();
+//
+//    }
+
     @Override
-    public void onConditionSelection(int position) {
+    public void onConditionSelection(int conditionId) {
 
         // Create new fragment and transaction
-        Fragment newFragment = new ConditionTreatment();
+        this.conditionContent.setCurrentCondition(conditionId);
+        Fragment newFragment = ConditionPickFragment.newInstance(this.conditionContent.getChildContentTitles());
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
 
         // Replace whatever is in the fragment_container view with this fragment,
         // and add the transaction to the back stack
         transaction.replace(R.id.container, newFragment);
-        transaction.addToBackStack(null);
+        transaction.addToBackStack("Condition Pick Fragment");
+
 
         // Commit the transaction
         transaction.commit();
 
     }
-
 
 }

@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
 
 public class ConditionContent {
@@ -20,12 +21,20 @@ public class ConditionContent {
     public static final String CONTENT_MAP_FILENAME = "content/condition-content-map.txt";
     private Context context;
     private Condition rootCondition;
+    private Condition currCondition;
+    private List<Condition> allConditions;
 
     public ConditionContent(Context context) {
 
         this.context = context;
+        this.allConditions = new ArrayList<Condition>();
+
         InputStream stream = readContentMapFromFile();
         this.rootCondition = readJsonStream(stream);
+
+        dumpIndex();
+
+        currCondition = rootCondition;
 
     }
 
@@ -65,7 +74,7 @@ public class ConditionContent {
         }
     }
 
-    public Condition readJsonStream(InputStream in)  {
+    public Condition readJsonStream(InputStream in) {
 
         JsonReader reader = null;
         Condition rootCondition = null;
@@ -95,6 +104,8 @@ public class ConditionContent {
 
     public Condition readCondition(JsonReader reader) throws IOException {
         int id = 255;
+        int parentId = 0;
+
         String text = null;
         boolean hasChildren = false;
         List childrenConditions = null;
@@ -102,30 +113,33 @@ public class ConditionContent {
         reader.beginObject();
         while (reader.hasNext()) {
             String name = reader.nextName();
-            if (name.equals("parent")) {
+            if (name.equals("id")) {
+                id = reader.nextInt();
+                Log.d("ConditionContent", "For JSON key id value = " + Integer.toString(id));
+            } else if (name.equals("parent")) {
                 if (reader.peek() == JsonToken.NULL)
                     reader.skipValue();
                 else {
                     id = reader.nextInt();
-                    //Log.d("ConditionContent", "For JSON key parent value = " + Integer.toString(id));
+                    Log.d("ConditionContent", "For JSON key parent value = " + Integer.toString(id));
                 }
             } else if (name.equals("text")) {
                 text = reader.nextString();
-                //Log.d("ConditionContent", "For JSON key text value = " + text);
-            }
-            else if (name.equals("hasChildren")) {
+                Log.d("ConditionContent", "For JSON key text value = " + text);
+            } else if (name.equals("hasChildren")) {
                 hasChildren = reader.nextBoolean();
-                //Log.d("ConditionContent", "For JSON key hasChildren value = " + hasChildren);
-            }
-            else if (name.equals("children") &&  reader.peek() != JsonToken.NULL) {
+                Log.d("ConditionContent", "For JSON key hasChildren value = " + hasChildren);
+            } else if (name.equals("children") && reader.peek() != JsonToken.NULL) {
                 childrenConditions = readChildrenArray(reader);
-            }
-            else {
+            } else {
                 reader.skipValue();
             }
         }
         reader.endObject();
-        return new Condition(id, text, childrenConditions);
+
+        Condition newCondition = new Condition(id, parentId, text, childrenConditions);
+        addConditionToIndex(newCondition);
+        return newCondition;
     }
 
     public List readChildrenArray(JsonReader reader) throws IOException {
@@ -133,7 +147,8 @@ public class ConditionContent {
         List childrenConditions = new ArrayList();
         reader.beginArray();
         while (reader.hasNext()) {
-            //Log.d("ConditionContent", "Making recursive readCondition() call for children.");
+
+            Log.d("ConditionContent", "Making recursive readCondition() call for children.");
             childrenConditions.add(readCondition(reader));
         }
         reader.endArray();
@@ -141,5 +156,49 @@ public class ConditionContent {
         return childrenConditions;
 
     }
+
+
+    private void addConditionToIndex(Condition newCondition) {
+        this.allConditions.add(newCondition);
+
+    }
+
+    public void dumpIndex() {
+
+        int i;
+        Condition c;
+        for (i = 0; i < this.allConditions.size(); i++) {
+            c = this.allConditions.get(i);
+            Log.d("ConditionContent", "Condition id = " + Integer.toString(c.id) + " is at index = " + Integer.toString(i));
+        }
+    }
+
+    public ArrayList<String> getChildContentTitles() {
+
+        ArrayList<String> titles = new ArrayList<String>();
+
+        for (Condition aCondition:this.currCondition.childrenConditions) {
+            titles.add(aCondition.title);
+
+        }
+        return titles;
+    }
+
+    public Condition getConditionWithId(int id) {
+
+        // iterate through list of conditions and re
+        // return condition with input id
+        for (Condition c:this.allConditions) {
+            if (c.id == id )
+                return c;
+        }
+        return null;
+    }
+
+    public void setCurrentCondition(int id)  {
+        this.currCondition = getConditionWithId(id);
+    }
+
+
 
 }
