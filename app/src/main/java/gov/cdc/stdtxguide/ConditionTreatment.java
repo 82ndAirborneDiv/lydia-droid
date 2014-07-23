@@ -22,30 +22,28 @@ import android.webkit.WebViewFragment;
  *
  */
 public class ConditionTreatment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    private static final String ARG_REGIMENS_PAGE = "regimens_page";
+    private static final String ARG_DXTX_PAGE = "dxtx_page";
+
+    private String regimensPage;
+    private String dxtxPage;
 
 
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
+     * @param regimens Regimens HTML file name.
+     * @param dxtx Description and treatment HTML file name.
      * @return A new instance of fragment ConditionTreatment.
      */
-    // TODO: Rename and change types and number of parameters
-    public static ConditionTreatment newInstance(String param1, String param2) {
+    public static ConditionTreatment newInstance(String regimens, String dxtx) {
         ConditionTreatment fragment = new ConditionTreatment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putString(ARG_REGIMENS_PAGE, regimens);
+        args.putString(ARG_DXTX_PAGE, dxtx);
         fragment.setArguments(args);
         return fragment;
     }
@@ -57,8 +55,8 @@ public class ConditionTreatment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            regimensPage = getArguments().getString(ARG_REGIMENS_PAGE);
+            dxtxPage = getArguments().getString(ARG_DXTX_PAGE);
         }
     }
 
@@ -70,7 +68,7 @@ public class ConditionTreatment extends Fragment {
 
         WebView wv = (WebView) v.findViewById(R.id.webView);
         wv.getSettings().setJavaScriptEnabled(false);
-        wv.loadUrl("file:///android_asset/content/c1-r.html");
+        wv.loadUrl("file:///android_asset/content/" + regimensPage);
 
         return v;
 

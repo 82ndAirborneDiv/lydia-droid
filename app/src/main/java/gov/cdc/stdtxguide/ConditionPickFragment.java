@@ -23,10 +23,12 @@ public class ConditionPickFragment extends ListFragment {
      * The fragment argument representing the section number for this
      * fragment.
      */
+    private static final String LOG_TAG = "ConditionPickFragment";
     private OnConditionSelectionListener mListener;
     private int currSectionNumber;
     private int currConditionId;
-    private ArrayList<String> conditions;
+    private ArrayList<String> conditionTitles;
+    private ArrayList<Integer> conditionIds;
 
 //    String[] conditions = new String[] {
 //            "Assault - Sexual",
@@ -61,11 +63,12 @@ public class ConditionPickFragment extends ListFragment {
     }
 
 
-    public static ConditionPickFragment newInstance(ArrayList<String> conditions) {
+    public static ConditionPickFragment newInstance(ArrayList<String> conditions, ArrayList<Integer> ids) {
 
         ConditionPickFragment fragment = new ConditionPickFragment();
         Bundle args = new Bundle();
         args.putStringArrayList(BaseFragment.ARG_CONDITION_CONTENT, conditions);
+        args.putIntegerArrayList(BaseFragment.ARG_CONDITION_IDS, ids);
         fragment.setArguments(args);
 
         return fragment;
@@ -81,12 +84,13 @@ public class ConditionPickFragment extends ListFragment {
         return fragment;
     }
 
-    public static ConditionPickFragment newInstance(int position, ArrayList<String> conditions) {
+    public static ConditionPickFragment newInstance(int position, ArrayList<String> conditions, ArrayList<Integer> ids) {
 
         ConditionPickFragment fragment = new ConditionPickFragment();
         Bundle args = new Bundle();
         args.putInt(BaseFragment.ARG_SECTION_NUMBER, position);
         args.putStringArrayList(BaseFragment.ARG_CONDITION_CONTENT, conditions);
+        args.putIntegerArrayList(BaseFragment.ARG_CONDITION_IDS, ids);
         fragment.setArguments(args);
 
         return fragment;
@@ -97,9 +101,13 @@ public class ConditionPickFragment extends ListFragment {
         /** Creating an array adapter to store the list of conditions **/
         ArrayAdapter<String> adapter;
 
-        conditions = getArguments().getStringArrayList(BaseFragment.ARG_CONDITION_CONTENT);
+        conditionIds = getArguments().getIntegerArrayList(BaseFragment.ARG_CONDITION_IDS);
+        Log.d(LOG_TAG, "In onCreateView loading condition IDs with count of " + conditionIds.size());
 
-        adapter = new ArrayAdapter<String>(inflater.getContext(), android.R.layout.simple_list_item_1, conditions);
+        conditionTitles = getArguments().getStringArrayList(BaseFragment.ARG_CONDITION_CONTENT);
+        Log.d(LOG_TAG, "In onCreateView loading conditions with count of " + conditionTitles.size());
+
+        adapter = new ArrayAdapter<String>(inflater.getContext(), android.R.layout.simple_list_item_1, conditionTitles);
 
         /** Setting the list adapter for the ListFragment */
         setListAdapter(adapter);
@@ -110,16 +118,13 @@ public class ConditionPickFragment extends ListFragment {
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
-        // do something with the data
-//        Toast.makeText(this.getActivity().getApplicationContext(),
-//                "Click ListItem Number " + position, Toast.LENGTH_SHORT)
-//                .show();
-       // Toast.makeText(this.getActivity(),
-       //         "Click ListItem Number " + position, Toast.LENGTH_SHORT)
-       //         .show();
-        if (mListener != null) {
-            mListener.onConditionSelection(position);
-        }
+        Log.d(LOG_TAG,"ListView item at position " + Integer.toString(position) + " has been selected.");
+        Log.d(LOG_TAG,"Selected condition has title " + conditionTitles.get(position));
+        int conditionId = conditionIds.get(position);
+        Log.d(LOG_TAG,"Selected condition has id " + conditionIds.get(position));
+
+        if (mListener != null)
+            mListener.onConditionSelection(conditionId);
 
     }
 

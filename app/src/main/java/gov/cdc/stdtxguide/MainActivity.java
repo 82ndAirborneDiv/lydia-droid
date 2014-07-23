@@ -24,7 +24,6 @@ public class MainActivity extends Activity
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
     private NavigationDrawerFragment mNavigationDrawerFragment;
-    private ConditionPickFragment prevCondPickFragment, currCondPickFragment;
     private static int lastPosition;
     private ConditionContent conditionContent;
 
@@ -65,11 +64,8 @@ public class MainActivity extends Activity
         switch (position) {
             case 0: {
                 fragmentManager.beginTransaction()
-                        .replace(R.id.container, ConditionPickFragment.newInstance(position + 1,conditionContent.getChildContentTitles()))
+                        .replace(R.id.container, ConditionPickFragment.newInstance(position, conditionContent.getChildContentTitles(), conditionContent.getChildContentIds()))
                         .commit();
-//                fragmentManager.beginTransaction()
-//                        .replace(R.id.container, ConditionPickFragment.newInstance(conditionContent.getChildContentTitles()))
-//                        .commit();
                 break;
             }
             case 1: {
@@ -174,7 +170,7 @@ public class MainActivity extends Activity
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                Bundle savedInstanceState) {
+                                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
             return rootView;
         }
@@ -207,13 +203,21 @@ public class MainActivity extends Activity
     @Override
     public void onConditionSelection(int conditionId) {
 
+        Fragment newFragment = null;
+        //int conditionId = position;
+
+        conditionContent.setCurrentCondition(conditionId);
+        Condition condition = conditionContent.getCurrCondition();
+
         // Create new fragment and transaction
-        this.conditionContent.setCurrentCondition(conditionId);
-        Fragment newFragment = ConditionPickFragment.newInstance(this.conditionContent.getChildContentTitles());
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        if (condition.numberOfChildren() != 0)
+            newFragment = ConditionPickFragment.newInstance(conditionContent.getChildContentTitles(), conditionContent.getChildContentIds());
+        else
+            newFragment = ConditionTreatment.newInstance(condition.regimensPage, condition.dxtxPage);
 
         // Replace whatever is in the fragment_container view with this fragment,
         // and add the transaction to the back stack
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.container, newFragment);
         transaction.addToBackStack("Condition Pick Fragment");
 
@@ -221,6 +225,6 @@ public class MainActivity extends Activity
         // Commit the transaction
         transaction.commit();
 
-    }
 
+    }
 }

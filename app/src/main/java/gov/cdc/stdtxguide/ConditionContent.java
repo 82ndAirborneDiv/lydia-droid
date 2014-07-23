@@ -107,6 +107,9 @@ public class ConditionContent {
         int parentId = 0;
 
         String text = null;
+        String regimensPage = null;
+        String dxtxPage = null;
+
         boolean hasChildren = false;
         List childrenConditions = null;
 
@@ -126,6 +129,12 @@ public class ConditionContent {
             } else if (name.equals("text")) {
                 text = reader.nextString();
                 Log.d("ConditionContent", "For JSON key text value = " + text);
+            } else if (name.equals("regimensPage")) {
+                regimensPage = reader.nextString();
+                Log.d("ConditionContent", "For JSON key regimensPage value = " + regimensPage);
+            } else if (name.equals("dxtxPage")) {
+                dxtxPage = reader.nextString();
+                Log.d("ConditionContent", "For JSON key dxtxPage value = " + dxtxPage);
             } else if (name.equals("hasChildren")) {
                 hasChildren = reader.nextBoolean();
                 Log.d("ConditionContent", "For JSON key hasChildren value = " + hasChildren);
@@ -137,7 +146,7 @@ public class ConditionContent {
         }
         reader.endObject();
 
-        Condition newCondition = new Condition(id, parentId, text, childrenConditions);
+        Condition newCondition = new Condition(id, parentId, text, regimensPage, dxtxPage, childrenConditions);
         addConditionToIndex(newCondition);
         return newCondition;
     }
@@ -184,6 +193,17 @@ public class ConditionContent {
         return titles;
     }
 
+    public ArrayList<Integer> getChildContentIds() {
+
+        ArrayList<Integer> ids = new ArrayList<Integer>();
+
+        for (Condition aCondition:this.currCondition.childrenConditions) {
+            ids.add(aCondition.id);
+
+        }
+        return ids;
+    }
+
     public Condition getConditionWithId(int id) {
 
         // iterate through list of conditions and re
@@ -199,6 +219,8 @@ public class ConditionContent {
         this.currCondition = getConditionWithId(id);
     }
 
-
+    public Condition getCurrCondition() {
+        return currCondition;
+    }
 
 }
