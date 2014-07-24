@@ -64,7 +64,7 @@ public class MainActivity extends Activity
         switch (position) {
             case 0: {
                 fragmentManager.beginTransaction()
-                        .replace(R.id.container, ConditionPickFragment.newInstance(position, conditionContent.getChildContentTitles(), conditionContent.getChildContentIds()))
+                        .replace(R.id.container, ConditionPickFragment.newInstance(position +1, conditionContent.getChildContentTitles(), conditionContent.getChildContentIds()))
                         .commit();
                 break;
             }
