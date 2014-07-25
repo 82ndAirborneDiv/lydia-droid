@@ -4,6 +4,8 @@ package gov.cdc.stdtxguide;
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -84,6 +86,7 @@ public class NavigationDrawerFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         // Indicate that this fragment would like to influence the set of actions in the action bar.
         setHasOptionsMenu(true);
+
     }
 
     @Override
@@ -252,11 +255,31 @@ public class NavigationDrawerFragment extends Fragment {
         }
 
         if (item.getItemId() == R.id.action_version) {
-            Toast.makeText(getActivity(), "STD TX Guide Version 0.1.1", Toast.LENGTH_LONG).show();
+
+            String versionName = getApplicationVersionName();
+            Toast.makeText(getActivity(), "STD TX Guide Version " + versionName, Toast.LENGTH_LONG).show();
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public int getApplicationVersionCode() {
+        PackageManager packageManager = this.getActivity().getPackageManager();
+        try {
+            PackageInfo packageInfo = packageManager.getPackageInfo(this.getActivity().getPackageName(), 0);
+            return packageInfo.versionCode;
+        } catch (PackageManager.NameNotFoundException ex) {} catch(Exception e){}
+        return 0;
+    }
+
+    public String getApplicationVersionName() {
+        PackageManager packageManager = this.getActivity().getPackageManager();
+        try {
+            PackageInfo packageInfo = packageManager.getPackageInfo(this.getActivity().getPackageName(), 0);
+            return packageInfo.versionName;
+        } catch (PackageManager.NameNotFoundException ex) {} catch(Exception e){}
+        return "";
     }
 
     /**
