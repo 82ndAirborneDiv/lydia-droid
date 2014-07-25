@@ -66,13 +66,13 @@ public class ConditionTreatment extends Fragment implements View.OnClickListener
 
         switch (v.getId()) {
             case R.id.regimensButton: {
-                if (regimensPage != null)
+                if (regimensPage != "")
                     this.wv.loadUrl("file:///android_asset/content/" + regimensPage);
                  break;
             }
 
             case R.id.dxtxButton: {
-                if (dxtxPage != null)
+                if (dxtxPage != "")
                     this.wv.loadUrl("file:///android_asset/content/" + dxtxPage);
                 break;
             }
@@ -85,18 +85,24 @@ public class ConditionTreatment extends Fragment implements View.OnClickListener
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_condition_treatment, container, false);
 
+        // set up buttons to switch between regimens and dxtx
+        Button regimensButton = (Button)v.findViewById(R.id.regimensButton);
+        regimensButton.setOnClickListener(this);
+        if (regimensPage.equals(""))
+            regimensButton.setEnabled(false);
+
+        Button dxtxButton = (Button)v.findViewById(R.id.dxtxButton);
+        dxtxButton.setOnClickListener(this);
+        if (dxtxPage.equals(""))
+            dxtxButton.setEnabled(false);
+
         // set up web view
         this.wv = (WebView) v.findViewById(R.id.webView);
         wv.getSettings().setJavaScriptEnabled(false);
-        if (regimensPage != null)
-            wv.loadUrl("file:///android_asset/content/" + regimensPage);
-        else
+        if (regimensPage.equals(""))
             wv.loadUrl("file:///android_asset/content/" + dxtxPage);
-
-        Button mClickButton1 = (Button)v.findViewById(R.id.regimensButton);
-        mClickButton1.setOnClickListener(this);
-        Button mClickButton2 = (Button)v.findViewById(R.id.dxtxButton);
-        mClickButton2.setOnClickListener(this);
+        else
+            wv.loadUrl("file:///android_asset/content/" + regimensPage);
 
         return v;
 
