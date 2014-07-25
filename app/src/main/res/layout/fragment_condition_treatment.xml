@@ -1,6 +1,7 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context="gov.cdc.stdtxguide.ConditionTreatment">
 
@@ -8,7 +9,42 @@
 
     <WebView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="460dp"
         android:id="@+id/webView"
         android:layout_gravity="center_horizontal|top" />
-</FrameLayout>
+
+    <GridLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/webView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_row="1"
+            android:layout_column="13">
+
+            <Button
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:text="Treatments"
+                android:layout_marginLeft="30dp"
+                android:id="@+id/regimensButton" />
+
+            <Space
+                android:layout_width="40dp"
+                android:layout_height="match_parent" />
+
+            <Button
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="30dp"
+                android:text="More Info"
+                android:id="@+id/dxtxButton" />
+        </LinearLayout>
+    </GridLayout>
+
+</RelativeLayout>

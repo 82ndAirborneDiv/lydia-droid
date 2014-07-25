@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewFragment;
-
+import android.widget.Button;
 
 
 /**
@@ -21,7 +21,7 @@ import android.webkit.WebViewFragment;
  * create an instance of this fragment.
  *
  */
-public class ConditionTreatment extends Fragment {
+public class ConditionTreatment extends Fragment implements View.OnClickListener {
 
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_REGIMENS_PAGE = "regimens_page";
@@ -29,6 +29,7 @@ public class ConditionTreatment extends Fragment {
 
     private String regimensPage;
     private String dxtxPage;
+    private WebView wv;
 
 
     /**
@@ -58,6 +59,24 @@ public class ConditionTreatment extends Fragment {
             regimensPage = getArguments().getString(ARG_REGIMENS_PAGE);
             dxtxPage = getArguments().getString(ARG_DXTX_PAGE);
         }
+
+    }
+
+    public void onClick(View v) {
+
+        switch (v.getId()) {
+            case R.id.regimensButton: {
+                if (regimensPage != null)
+                    this.wv.loadUrl("file:///android_asset/content/" + regimensPage);
+                 break;
+            }
+
+            case R.id.dxtxButton: {
+                if (dxtxPage != null)
+                    this.wv.loadUrl("file:///android_asset/content/" + dxtxPage);
+                break;
+            }
+        }
     }
 
     @Override
@@ -66,9 +85,18 @@ public class ConditionTreatment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_condition_treatment, container, false);
 
-        WebView wv = (WebView) v.findViewById(R.id.webView);
+        // set up web view
+        this.wv = (WebView) v.findViewById(R.id.webView);
         wv.getSettings().setJavaScriptEnabled(false);
-        wv.loadUrl("file:///android_asset/content/" + regimensPage);
+        if (regimensPage != null)
+            wv.loadUrl("file:///android_asset/content/" + regimensPage);
+        else
+            wv.loadUrl("file:///android_asset/content/" + dxtxPage);
+
+        Button mClickButton1 = (Button)v.findViewById(R.id.regimensButton);
+        mClickButton1.setOnClickListener(this);
+        Button mClickButton2 = (Button)v.findViewById(R.id.dxtxButton);
+        mClickButton2.setOnClickListener(this);
 
         return v;
 
