@@ -9,6 +9,7 @@ import android.app.FragmentTransaction;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,9 +25,10 @@ public class MainActivity extends Activity
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
     private NavigationDrawerFragment mNavigationDrawerFragment;
+    private BaseFragment activeFragment;
     private static int lastPosition;
     private ConditionContent conditionContent;
-
+    private static final String LOG_TAG = "MainActivity";
 
     /**
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
@@ -54,39 +56,39 @@ public class MainActivity extends Activity
     }
 
     @Override
-    public void onNavigationDrawerItemSelected(int position) {
+    public void onNavigationDrawerItemSelected(int section) {
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getFragmentManager();
         BaseFragment targetFragment = null;
 
 
-        // Populate the fragment
-        switch (position) {
+        // populate the fragment
+        switch (section) {
             case 0: {
+                conditionContent.resetCurrentCondition();
                 fragmentManager.beginTransaction()
-                        .replace(R.id.container, ConditionPickFragment.newInstance(position +1, conditionContent.getChildContentTitles(), conditionContent.getChildContentIds()))
+                        .replace(R.id.container, ConditionPickFragment.newInstance(section +1, conditionContent.getChildContentTitles(), conditionContent.getChildContentIds()))
                         .commit();
                 break;
             }
             case 1: {
                 fragmentManager.beginTransaction()
-                        .replace(R.id.container, GuidelinesFragment.newInstance(position + 1))
+                        .replace(R.id.container, GuidelinesFragment.newInstance(section + 1))
                         .commit();
 
                 break;
             }
             default: {
                 fragmentManager.beginTransaction()
-                        .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
+                        .replace(R.id.container, PlaceholderFragment.newInstance(section + 1))
                         .commit();
                 break;
             }
-
         }
     }
 
-    public void onSectionAttached(int number) {
-        switch (number) {
+    public void onSectionAttached(int sectionNumber) {
+        switch (sectionNumber) {
             case 1:
                 mTitle = getString(R.string.title_section1);
                 break;
@@ -106,6 +108,7 @@ public class MainActivity extends Activity
                 mTitle = getString(R.string.title_section6);
                 break;
         }
+        Log.d(LOG_TAG, "onSectionAttached received from "+ mTitle);
     }
 
     public void restoreActionBar() {
@@ -115,6 +118,13 @@ public class MainActivity extends Activity
         actionBar.setTitle(mTitle);
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        // turn on the Navigation Drawer image;
+        // this is called in the LowerLevelFragments
+        mNavigationDrawerFragment.showNavActionBar();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -183,48 +193,38 @@ public class MainActivity extends Activity
         }
     }
 
-//    @Override
-//    public void onConditionSelection(int position) {
-//
-//        // Create new fragment and transaction
-//        Fragment newFragment = new ConditionTreatment();
-//        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-//
-//        // Replace whatever is in the fragment_container view with this fragment,
-//        // and add the transaction to the back stack
-//        transaction.replace(R.id.container, newFragment);
-//        transaction.addToBackStack(null);
-//
-//        // Commit the transaction
-//        transaction.commit();
-//
-//    }
-
     @Override
     public void onConditionSelection(int conditionId) {
 
         Fragment newFragment = null;
-        //int conditionId = position;
 
         conditionContent.setCurrentCondition(conditionId);
         Condition condition = conditionContent.getCurrCondition();
 
-        // Create new fragment and transaction
-        if (condition.numberOfChildren() != 0)
-            newFragment = ConditionPickFragment.newInstance(conditionContent.getChildContentTitles(), conditionContent.getChildContentIds());
-        else
-            newFragment = ConditionTreatment.newInstance(condition.regimensPage, condition.dxtxPage);
-
         // Replace whatever is in the fragment_container view with this fragment,
         // and add the transaction to the back stack
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.replace(R.id.container, newFragment);
-        transaction.addToBackStack("Condition Pick Fragment");
 
+        // Create new fragment and transaction
+        if (condition.numberOfChildren() != 0) {
+            newFragment = ConditionPickFragment.newInstance(conditionContent.getChildContentTitles(), conditionContent.getChildContentIds());
+            transaction.replace(R.id.container, newFragment);
+            transaction.addToBackStack("Condition Pick Fragment");
+
+
+        } else {
+
+            mNavigationDrawerFragment.showUpCaratActionBar();
+            newFragment = ConditionTreatment.newInstance(condition.regimensPage, condition.dxtxPage);
+            transaction.replace(R.id.container, newFragment);
+            transaction.addToBackStack("Condition Treatment Fragment");
+
+
+
+        }
 
         // Commit the transaction
         transaction.commit();
-
 
     }
 }
