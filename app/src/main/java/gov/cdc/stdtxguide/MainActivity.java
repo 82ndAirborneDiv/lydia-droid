@@ -78,6 +78,13 @@ public class MainActivity extends Activity
 
                 break;
             }
+            case 5: {
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, AboutUsFragment.newInstance(section +1))
+                        .commit();
+                break;
+
+            }
             default: {
                 fragmentManager.beginTransaction()
                         .replace(R.id.container, PlaceholderFragment.newInstance(section + 1))
