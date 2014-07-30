@@ -38,6 +38,10 @@ public class ConditionContent {
 
     }
 
+    public void resetCurrentCondition() {
+        currCondition = rootCondition;
+    }
+
     private InputStream readContentMapFromFile() {
 
         InputStream stream = null;
