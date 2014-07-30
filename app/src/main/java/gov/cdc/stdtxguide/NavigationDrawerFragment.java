@@ -298,6 +298,17 @@ public class NavigationDrawerFragment extends Fragment {
         return getActivity().getActionBar();
     }
 
+    public void showUpCaratActionBar() {
+        mDrawerToggle.setDrawerIndicatorEnabled(false);
+    }
+    //change action bar to show navigation drawer icon
+    public void showNavActionBar() {
+        mDrawerToggle.setDrawerIndicatorEnabled(true);
+    }
+
+
+
+
     /**
      * Callbacks interface that all activities using this fragment must implement.
      */
