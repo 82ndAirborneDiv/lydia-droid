@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
@@ -26,6 +28,8 @@ public class ConditionTreatment extends Fragment implements View.OnClickListener
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_REGIMENS_PAGE = "regimens_page";
     private static final String ARG_DXTX_PAGE = "dxtx_page";
+    private static final String LOG_TAG = "ConditionTreatment";
+
 
     private String regimensPage;
     private String dxtxPage;
@@ -40,6 +44,17 @@ public class ConditionTreatment extends Fragment implements View.OnClickListener
      * @param dxtx Description and treatment HTML file name.
      * @return A new instance of fragment ConditionTreatment.
      */
+    public static ConditionTreatment newInstance(int section, String regimens, String dxtx) {
+        ConditionTreatment fragment = new ConditionTreatment();
+        Bundle args = new Bundle();
+        args.putInt(BaseFragment.ARG_SECTION_NUMBER, section);
+        args.putString(ARG_REGIMENS_PAGE, regimens);
+        args.putString(ARG_DXTX_PAGE, dxtx);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+
     public static ConditionTreatment newInstance(String regimens, String dxtx) {
         ConditionTreatment fragment = new ConditionTreatment();
         Bundle args = new Bundle();
@@ -48,6 +63,8 @@ public class ConditionTreatment extends Fragment implements View.OnClickListener
         fragment.setArguments(args);
         return fragment;
     }
+
+
     public ConditionTreatment() {
         // Required empty public constructor
     }
@@ -59,6 +76,18 @@ public class ConditionTreatment extends Fragment implements View.OnClickListener
             regimensPage = getArguments().getString(ARG_REGIMENS_PAGE);
             dxtxPage = getArguments().getString(ARG_DXTX_PAGE);
         }
+
+        // like to add items to the Options Menu
+        setHasOptionsMenu(true);
+        // update the actionbar to show the up carat/affordance
+        getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d(LOG_TAG, "--> got onResume.");
 
     }
 
@@ -78,6 +107,14 @@ public class ConditionTreatment extends Fragment implements View.OnClickListener
             }
         }
     }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        ((MainActivity) activity).onSectionAttached(
+                getArguments().getInt(BaseFragment.ARG_SECTION_NUMBER));
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -106,6 +143,18 @@ public class ConditionTreatment extends Fragment implements View.OnClickListener
 
         return v;
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Get item selected and deal with it
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                //called when the up affordance/carat in actionbar is pressed
+                getActivity().onBackPressed();
+                return true;
+        }
+        return false;
     }
 
 }
