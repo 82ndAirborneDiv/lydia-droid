@@ -79,7 +79,7 @@ public class ConditionTreatment extends Fragment implements View.OnClickListener
 
         // like to add items to the Options Menu
         setHasOptionsMenu(true);
-        // update the actionbar to show the up carat/affordance
+        // update the actionbar to show the up carat
         getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
 
     }
@@ -150,7 +150,7 @@ public class ConditionTreatment extends Fragment implements View.OnClickListener
         // Get item selected and deal with it
         switch (item.getItemId()) {
             case android.R.id.home:
-                //called when the up affordance/carat in actionbar is pressed
+                //called when the up carat in actionbar is pressed
                 getActivity().onBackPressed();
                 return true;
         }

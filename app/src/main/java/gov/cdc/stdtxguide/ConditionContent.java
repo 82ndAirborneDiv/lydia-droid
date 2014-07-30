@@ -15,6 +15,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
+import java.util.Stack;
 
 public class ConditionContent {
 
@@ -23,11 +24,13 @@ public class ConditionContent {
     private Condition rootCondition;
     private Condition currCondition;
     private List<Condition> allConditions;
+    private Stack<Condition> conditionStack;
 
     public ConditionContent(Context context) {
 
         this.context = context;
         this.allConditions = new ArrayList<Condition>();
+        this.conditionStack = new Stack<Condition>();
 
         InputStream stream = readContentMapFromFile();
         this.rootCondition = readJsonStream(stream);
@@ -226,5 +229,7 @@ public class ConditionContent {
     public Condition getCurrCondition() {
         return currCondition;
     }
+
+    public int getCurrentConditionId() { return currCondition.id;}
 
 }

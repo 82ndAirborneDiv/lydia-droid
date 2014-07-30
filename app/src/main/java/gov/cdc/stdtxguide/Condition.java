@@ -31,4 +31,12 @@ public class Condition {
         return childrenConditions.size();
     }
 
+    public boolean isRootCondition() {
+
+        if (id == 0)
+            return true;
+        return false;
+    }
+
+
 }

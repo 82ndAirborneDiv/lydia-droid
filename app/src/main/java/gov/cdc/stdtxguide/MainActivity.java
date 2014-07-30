@@ -29,6 +29,7 @@ public class MainActivity extends Activity
     private static int lastPosition;
     private ConditionContent conditionContent;
     private static final String LOG_TAG = "MainActivity";
+    private int fragCount;
 
     /**
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
@@ -52,6 +53,8 @@ public class MainActivity extends Activity
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
 
+        fragCount = 0;
+
 
     }
 
@@ -67,7 +70,7 @@ public class MainActivity extends Activity
             case 0: {
                 conditionContent.resetCurrentCondition();
                 fragmentManager.beginTransaction()
-                        .replace(R.id.container, ConditionPickFragment.newInstance(section +1, conditionContent.getChildContentTitles(), conditionContent.getChildContentIds()))
+                        .replace(R.id.container, ConditionPickFragment.newInstance(section +1, conditionContent.getCurrentConditionId(), conditionContent.getChildContentTitles(), conditionContent.getChildContentIds()))
                         .commit();
                 break;
             }
@@ -130,7 +133,14 @@ public class MainActivity extends Activity
         super.onBackPressed();
         // turn on the Navigation Drawer image;
         // this is called in the LowerLevelFragments
-        mNavigationDrawerFragment.showNavActionBar();
+        if (fragCount != 0)
+            fragCount--;
+
+        if(fragCount == 0)
+            mNavigationDrawerFragment.showNavActionBar();
+        else
+            mNavigationDrawerFragment.showUpCaratActionBar();
+
     }
 
     @Override
@@ -214,7 +224,14 @@ public class MainActivity extends Activity
 
         // Create new fragment and transaction
         if (condition.numberOfChildren() != 0) {
-            newFragment = ConditionPickFragment.newInstance(conditionContent.getChildContentTitles(), conditionContent.getChildContentIds());
+
+            if (condition.isRootCondition())
+                mNavigationDrawerFragment.showNavActionBar();
+            else
+                mNavigationDrawerFragment.showUpCaratActionBar();
+
+
+            newFragment = ConditionPickFragment.newInstance(condition.id, conditionContent.getChildContentTitles(), conditionContent.getChildContentIds());
             transaction.replace(R.id.container, newFragment);
             transaction.addToBackStack("Condition Pick Fragment");
 
@@ -232,6 +249,9 @@ public class MainActivity extends Activity
 
         // Commit the transaction
         transaction.commit();
+        fragCount++;
+
+
 
     }
 }

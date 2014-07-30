@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -63,10 +64,11 @@ public class ConditionPickFragment extends ListFragment {
     }
 
 
-    public static ConditionPickFragment newInstance(ArrayList<String> conditions, ArrayList<Integer> ids) {
+    public static ConditionPickFragment newInstance(int conditionId, ArrayList<String> conditions, ArrayList<Integer> ids) {
 
         ConditionPickFragment fragment = new ConditionPickFragment();
         Bundle args = new Bundle();
+        args.putInt(BaseFragment.ARG_CONDITION_ID, conditionId);
         args.putStringArrayList(BaseFragment.ARG_CONDITION_CONTENT, conditions);
         args.putIntegerArrayList(BaseFragment.ARG_CONDITION_IDS, ids);
         fragment.setArguments(args);
@@ -74,21 +76,12 @@ public class ConditionPickFragment extends ListFragment {
         return fragment;
     }
 
-    public static ConditionPickFragment newInstance(int position) {
-
-        ConditionPickFragment fragment = new ConditionPickFragment();
-        Bundle args = new Bundle();
-        args.putInt(BaseFragment.ARG_SECTION_NUMBER, position);
-        fragment.setArguments(args);
-
-        return fragment;
-    }
-
-    public static ConditionPickFragment newInstance(int section, ArrayList<String> conditions, ArrayList<Integer> ids) {
+    public static ConditionPickFragment newInstance(int section, int conditionId, ArrayList<String> conditions, ArrayList<Integer> ids) {
 
         ConditionPickFragment fragment = new ConditionPickFragment();
         Bundle args = new Bundle();
         args.putInt(BaseFragment.ARG_SECTION_NUMBER, section);
+        args.putInt(BaseFragment.ARG_CONDITION_ID, conditionId);
         args.putStringArrayList(BaseFragment.ARG_CONDITION_CONTENT, conditions);
         args.putIntegerArrayList(BaseFragment.ARG_CONDITION_IDS, ids);
         fragment.setArguments(args);
@@ -104,9 +97,27 @@ public class ConditionPickFragment extends ListFragment {
 
     }
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        currConditionId = getArguments().getInt(BaseFragment.ARG_CONDITION_ID);
+
+        if (currConditionId != 0) {
+            // like to add items to the Options Menu
+            setHasOptionsMenu(true);
+            // update the actionbar to show the up carat
+            getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
+
+        }
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
+
+
+
         /** Creating an array adapter to store the list of conditions **/
         ArrayAdapter<String> adapter;
 
@@ -115,6 +126,8 @@ public class ConditionPickFragment extends ListFragment {
 
         conditionTitles = getArguments().getStringArrayList(BaseFragment.ARG_CONDITION_CONTENT);
         Log.d(LOG_TAG, "In onCreateView loading conditions with count of " + conditionTitles.size());
+
+
 
         adapter = new ArrayAdapter<String>(inflater.getContext(), android.R.layout.simple_list_item_1, conditionTitles);
 
@@ -169,10 +182,9 @@ public class ConditionPickFragment extends ListFragment {
     @Override
     public void onResume() {
         super.onResume();
-        Log.d(LOG_TAG, "-->got onResume");
+
 
     }
-
 
 
     public interface OnConditionSelectionListener {
@@ -186,5 +198,18 @@ public class ConditionPickFragment extends ListFragment {
             mListener.onConditionSelection(position);
         }
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Get item selected and deal with it
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // called when the up carat in actionbar is pressed
+                getActivity().onBackPressed();
+                return true;
+        }
+        return false;
+    }
+
 
 }
