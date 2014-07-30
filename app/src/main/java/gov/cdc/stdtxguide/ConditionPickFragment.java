@@ -84,17 +84,26 @@ public class ConditionPickFragment extends ListFragment {
         return fragment;
     }
 
-    public static ConditionPickFragment newInstance(int position, ArrayList<String> conditions, ArrayList<Integer> ids) {
+    public static ConditionPickFragment newInstance(int section, ArrayList<String> conditions, ArrayList<Integer> ids) {
 
         ConditionPickFragment fragment = new ConditionPickFragment();
         Bundle args = new Bundle();
-        args.putInt(BaseFragment.ARG_SECTION_NUMBER, position);
+        args.putInt(BaseFragment.ARG_SECTION_NUMBER, section);
         args.putStringArrayList(BaseFragment.ARG_CONDITION_CONTENT, conditions);
         args.putIntegerArrayList(BaseFragment.ARG_CONDITION_IDS, ids);
         fragment.setArguments(args);
 
         return fragment;
     }
+
+
+    public void onBackPressedCallback() {
+        //this method is called by the DetailActivity,
+        //when its onBackPressed() method is triggered
+        Log.d("baseFragment", "the back button was pressed!");
+
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
@@ -156,6 +165,15 @@ public class ConditionPickFragment extends ListFragment {
         super.onDetach();
         mListener = null;
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d(LOG_TAG, "-->got onResume");
+
+    }
+
+
 
     public interface OnConditionSelectionListener {
         // TODO: Update argument type and name
