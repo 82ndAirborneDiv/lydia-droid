@@ -4,13 +4,13 @@
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-tools:context="gov.cdc.stdtxguide.AboutUsFragment">
+tools:context="gov.cdc.stdtxguide.TermsFragment">
 
 
 <WebView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/aboutUsWebView"
+    android:id="@+id/termsWebView"
     android:layout_gravity="center_horizontal|top" />
 
 
