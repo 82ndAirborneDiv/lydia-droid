@@ -1,6 +1,7 @@
 package gov.cdc.stdtxguide;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -34,6 +35,8 @@ public class ConditionTreatment extends Fragment implements View.OnClickListener
     private String regimensPage;
     private String dxtxPage;
     private WebView wv;
+    private Button regimensButton;
+    private Button dxtxButton;
 
 
     /**
@@ -91,18 +94,40 @@ public class ConditionTreatment extends Fragment implements View.OnClickListener
 
     }
 
+    public void selectRegimensButton() {
+        regimensButton.setBackgroundColor(Color.BLUE);
+        regimensButton.setTextColor(Color.WHITE);
+        dxtxButton.setBackgroundColor(Color.GRAY);
+        dxtxButton.setTextColor(Color.BLACK);
+
+    }
+
+    public void selectDxTxButton() {
+        dxtxButton.setBackgroundColor(Color.BLUE);
+        dxtxButton.setTextColor(Color.WHITE);
+        regimensButton.setBackgroundColor(Color.GRAY);
+        regimensButton.setTextColor(Color.BLACK);
+
+    }
+
+
     public void onClick(View v) {
 
         switch (v.getId()) {
             case R.id.regimensButton: {
-                if (regimensPage != "")
+                if (regimensPage != "") {
                     this.wv.loadUrl("file:///android_asset/content/" + regimensPage);
-                 break;
+                    selectRegimensButton();
+                }
+
+                break;
             }
 
             case R.id.dxtxButton: {
-                if (dxtxPage != "")
+                if (dxtxPage != "") {
                     this.wv.loadUrl("file:///android_asset/content/" + dxtxPage);
+                    selectDxTxButton();
+                }
                 break;
             }
         }
@@ -123,12 +148,12 @@ public class ConditionTreatment extends Fragment implements View.OnClickListener
         View v = inflater.inflate(R.layout.fragment_condition_treatment, container, false);
 
         // set up buttons to switch between regimens and dxtx
-        Button regimensButton = (Button)v.findViewById(R.id.regimensButton);
+        regimensButton = (Button)v.findViewById(R.id.regimensButton);
         regimensButton.setOnClickListener(this);
         if (regimensPage.equals(""))
             regimensButton.setEnabled(false);
 
-        Button dxtxButton = (Button)v.findViewById(R.id.dxtxButton);
+        dxtxButton = (Button)v.findViewById(R.id.dxtxButton);
         dxtxButton.setOnClickListener(this);
         if (dxtxPage.equals(""))
             dxtxButton.setEnabled(false);
@@ -136,10 +161,13 @@ public class ConditionTreatment extends Fragment implements View.OnClickListener
         // set up web view
         this.wv = (WebView) v.findViewById(R.id.webView);
         wv.getSettings().setJavaScriptEnabled(false);
-        if (regimensPage.equals(""))
+        if (regimensPage.equals("")) {
             wv.loadUrl("file:///android_asset/content/" + dxtxPage);
-        else
+            selectDxTxButton();
+        } else {
             wv.loadUrl("file:///android_asset/content/" + regimensPage);
+            selectRegimensButton();
+        }
 
         return v;
 
