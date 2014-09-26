@@ -1,20 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>2</title>
+
+        <link href="bootstrap.min.css" rel="stylesheet">
         <link href="custom_arrow.css" rel="stylesheet" type="text/css"/>
         <link href="treatments.css" rel="stylesheet" type="text/css"/>
         <link href="recreated_tables.css" rel="stylesheet" type="text/css"/>
+           <style>
+        .sep {
+            border-bottom:1px solid lightgray;
+        }
+        .sep td {
+            padding-bottom:5px;
+            padding-top:5px;
+        }
+        br {
+            display: block;
+            margin-top: 5px 0;
+        }
+    </style>
     </head>
     <body>
-        <div data-role="page" id="c2-r" data-theme="a">
-            <div data-id="quickpick-header" data-role="header" data-theme="b" data-position="fixed">    </div>
-            <div data-role="content" data-theme="a" >
-                <div id=quickpick_breadcrumbs>
+            <br />
+            <div class="container">
+                <ol class="breadcrumb small">
                 
-                        <h2>Bacterial Vaginosis</h2>
-                </div>   <!-- end of quick pick breadcrumbs -->
-                </br>
+                        <li class="active">Bacterial Vaginosis</li>
+                </ol>
+              </div><!-- end of breadcrumbs -->
+            
+        <div class="container">
         <div id="table">
             <div id="regimen_header">Recommended Regimens
             </div>
@@ -31,6 +50,7 @@
             <hr/>
                 <p class="regimen_footer_text">† Clindamycin cream is oil-based and might weaken latex condoms and diaphragms for 5 days after use (refer to clindamycin product labeling for additional information).</p>
         </div>
+        <br />
 
         <div id="table">
             <div id="regimen_header">Alternative Regimens
@@ -43,6 +63,7 @@
             </span>
 
         </div>
+        <br />
 
         <div id="table">
             <div id="regimen_header">Recommended Regimens for Pregnant Women
@@ -54,7 +75,9 @@
             </span>
 
         </div>
+        <br />
 
+        </div>
             </div>
         </div>
     </body>

@@ -1,20 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>12</title>
+
+        <link href="bootstrap.min.css" rel="stylesheet">
         <link href="custom_arrow.css" rel="stylesheet" type="text/css"/>
         <link href="treatments.css" rel="stylesheet" type="text/css"/>
         <link href="recreated_tables.css" rel="stylesheet" type="text/css"/>
+           <style>
+        .sep {
+            border-bottom:1px solid lightgray;
+        }
+        .sep td {
+            padding-bottom:5px;
+            padding-top:5px;
+        }
+        br {
+            display: block;
+            margin-top: 5px 0;
+        }
+    </style>
     </head>
     <body>
-        <div data-role="page" id="c12-r" data-theme="a">
-            <div data-id="quickpick-header" data-role="header" data-theme="b" data-position="fixed">    </div>
-            <div data-role="content" data-theme="a" >
-                <div id=quickpick_breadcrumbs>
+            <br />
+            <div class="container">
+                <ol class="breadcrumb small">
                 
-                        <h2>Chlamydia -> Infants</h2>
-                </div>   <!-- end of quick pick breadcrumbs -->
-                </br>
+                        <li class="active">Chlamydia</li><li class="active">Infants</li>
+                </ol>
+              </div><!-- end of breadcrumbs -->
+            
+        <div class="container">
         <div id="table">
             <div id="regimen_header">Recommended Regimen for Infants with Ophthalmaia Neonatorum caused by C. trachomatis
             </div>
@@ -27,6 +46,7 @@
             <hr/>
                 <p class="regimen_footer_text">† Data on use of other macrolides (e.g., azithromycin and clarithromycin) for the treatment of neonatal chlamydia infection are limited. The results of one study involving a limited number of patients suggest that a short course of azithromycin, 20 mg/kg/day orally, 1 dose daily for 3 days, might be effective (292).</p>
         </div>
+        <br />
 
         <div id="table">
             <div id="regimen_header">Recommended Regimen for Infants with Pneumonia caused by C. trachomatis
@@ -36,7 +56,9 @@
             </span>
 
         </div>
+        <br />
 
+        </div>
             </div>
         </div>
     </body>

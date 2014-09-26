@@ -32,6 +32,8 @@
                 android:layout_height="wrap_content"
                 android:text="Treatments"
                 android:layout_marginLeft="30dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:id="@+id/regimensButton" />
 
             <Space
@@ -42,6 +44,8 @@
                 android:layout_width="140dp"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="30dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:text="More Info"
                 android:id="@+id/dxtxButton" />
         </LinearLayout>
