@@ -31,32 +31,6 @@ public class ConditionPickFragment extends ListFragment {
     private ArrayList<String> conditionTitles;
     private ArrayList<Integer> conditionIds;
 
-//    String[] conditions = new String[] {
-//            "Assault - Sexual",
-//            "Bacterial Vaginosis",
-//            "Candidiasis - Vulvovaginal",
-//            "Cervicitis",
-//            "Chancroid",
-//            "Chlamydia",
-//            "Epididymitis",
-//            "Gonorrhea",
-//            "Granuloma Inguinale",
-//            "Hepatitis",
-//            "Herpes - Genital",
-//            "HIV",
-//            "Human Papilloma Virus",
-//            "Lymphogranuloma Venereum",
-//            "Pediculosis Pubis",
-//            "Pelvic Inflammatory Disease",
-//            "Proctitis/Proctocolitis/Enteritis",
-//            "Scabies",
-//            "Syphilis",
-//            "Trichomoniasis",
-//            "Urethritis",
-//            "Warts - Genital",
-//
-//    };
-
 
     public static ConditionPickFragment newInstance(Context context) {
         ConditionPickFragment cpf = new ConditionPickFragment();

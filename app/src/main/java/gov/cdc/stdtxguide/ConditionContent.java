@@ -123,7 +123,7 @@ public class ConditionContent {
         reader.beginObject();
         while (reader.hasNext()) {
             String name = reader.nextName();
-            if (name.equals("id")) {
+            if (name.equals("condition_id")) {
                 id = reader.nextInt();
                 Log.d("ConditionContent", "For JSON key id value = " + Integer.toString(id));
             } else if (name.equals("parent")) {
