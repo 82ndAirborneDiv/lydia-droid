@@ -96,7 +96,7 @@ public class MainActivity extends Activity
             }
             case 4: {
                 fragmentManager.beginTransaction()
-                        .replace(R.id.container, ReferencesFragment.newInstance())
+                        .replace(R.id.container, ReferencesFragment.newInstance(section + 1))
                         .commit();
                 break;
             }
