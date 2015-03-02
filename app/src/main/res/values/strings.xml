@@ -4,8 +4,11 @@
     <string name="app_name">STD Tx Guide</string>
     <string name="title_section1">Condition Quick Pick</string>
     <string name="title_section2">Terms and Abbreviations</string>
-    <string name="title_section3">About Us</string>
-    <string name="title_section4">End User Agreement</string>
+    <string name="title_section3">Full Guidelines</string>
+    <string name="title_section4">Taking a Sexual History</string>
+    <string name="title_section5">References</string>
+    <string name="title_section6">About Us</string>
+    <string name="title_section7">End User Agreement</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_version">Version Info</string>

@@ -13,55 +13,55 @@ import android.webkit.WebView;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link AboutUsFragment.OnFragmentInteractionListener} interface
+ * {@link HistoryFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link AboutUsFragment#newInstance} factory method to
+ * Use the {@link HistoryFragment#newInstance} factory method to
  * create an instance of this fragment.
- *
  */
-public class AboutUsFragment extends BaseFragment {
-    private static final String LOG_TAG = "AboutUs";
+public class HistoryFragment extends BaseFragment {
+    // TODO: Rename parameter arguments, choose names that match
+    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 
-
-    // TODO: Rename and change types of parameters
     private WebView wv;
+
 
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param section Parameter 1.
-     * @return A new instance of fragment AboutUsFragment.
+     * @return A new instance of fragment HistoryFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static AboutUsFragment newInstance(int section) {
-        AboutUsFragment fragment = new AboutUsFragment();
+    public static HistoryFragment newInstance(int section) {
+        HistoryFragment fragment = new HistoryFragment();
         Bundle args = new Bundle();
         args.putInt(BaseFragment.ARG_SECTION_NUMBER, section);
         fragment.setArguments(args);
         return fragment;
     }
-    public AboutUsFragment() {
+
+    public HistoryFragment() {
         // Required empty public constructor
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_about_us, container, false);
+        View v =  inflater.inflate(R.layout.fragment_history, container, false);
 
-        this.wv = (WebView) v.findViewById(R.id.aboutUsWebView);
+
+        this.wv = (WebView) v.findViewById(R.id.historyWebView);
         wv.getSettings().setJavaScriptEnabled(false);
-        wv.loadUrl("file:///android_asset/about_us.html");
+        wv.loadUrl("file:///android_asset/sexualhistory.html");
 
         return v;
-
     }
 
 
@@ -73,7 +73,6 @@ public class AboutUsFragment extends BaseFragment {
     }
 
 
-    @Override
     public void onDetach() {
         super.onDetach();
     }

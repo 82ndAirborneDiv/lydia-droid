@@ -7,8 +7,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 
 public class GuidelinesFragment extends BaseFragment {
+
+    private WebView wv;
+
     public static GuidelinesFragment newInstance(Context context) {
         GuidelinesFragment gf = new GuidelinesFragment();
         return gf;
@@ -22,6 +26,23 @@ public class GuidelinesFragment extends BaseFragment {
         return fragment;
     }
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View v = inflater.inflate(R.layout.fragment_guidelines, container, false);
+
+        this.wv = (WebView) v.findViewById(R.id.guidelinesWebView);
+        wv.getSettings().setJavaScriptEnabled(false);
+        wv.loadUrl("file:///android_asset/full.html");
+
+        return v;
+    }
 
     @Override
     public void onAttach(Activity activity) {
@@ -29,12 +50,6 @@ public class GuidelinesFragment extends BaseFragment {
         ((MainActivity) activity).onSectionAttached(
                 getArguments().getInt(ARG_SECTION_NUMBER));
 
-     }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
-        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_guidelines, null);
-        return root;
     }
 
 }

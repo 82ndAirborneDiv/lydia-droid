@@ -82,12 +82,31 @@ public class MainActivity extends Activity
             }
             case 2: {
                 fragmentManager.beginTransaction()
-                        .replace(R.id.container, AboutUsFragment.newInstance(section +1))
+                        .replace(R.id.container, GuidelinesFragment.newInstance(section +1))
                         .commit();
                 break;
 
             }
             case 3: {
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, HistoryFragment.newInstance(section +1))
+
+                        .commit();
+                break;
+            }
+            case 4: {
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, ReferencesFragment.newInstance())
+                        .commit();
+                break;
+            }
+            case 5: {
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, AboutUsFragment.newInstance(section + 1))
+                        .commit();
+                break;
+            }
+            case 6: {
                 fragmentManager.beginTransaction()
                         .replace(R.id.container, EulaFragment.newInstance(section + 1))
                         .commit();
@@ -109,6 +128,15 @@ public class MainActivity extends Activity
                 break;
             case 4:
                 mTitle = getString(R.string.title_section4);
+                break;
+            case 5:
+                mTitle = getString(R.string.title_section5);
+                break;
+            case 6:
+                mTitle = getString(R.string.title_section6);
+                break;
+            case 7:
+                mTitle = getString(R.string.title_section7);
                 break;
         }
         Log.d(LOG_TAG, "onSectionAttached received from "+ mTitle);
