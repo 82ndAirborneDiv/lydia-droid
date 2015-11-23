@@ -14,6 +14,16 @@ public class Condition {
     public String regimensPage;
     public String dxtxPage;
     public List<Condition> childrenConditions;
+    private ArrayList<String> childrenConditionTitles;
+    private ArrayList<Integer> childrenConditionIds;
+
+    public ArrayList<String> getChildrenConditionTitles() {
+        return childrenConditionTitles;
+    }
+
+    public ArrayList<Integer> getChildrenConditionIds() {
+        return childrenConditionIds;
+    }
 
     public Condition(int id, int parentId, String title, String regimensPage, String dxtxPage, List<Condition> children) {
 
@@ -23,6 +33,14 @@ public class Condition {
         this.childrenConditions = children;
         this.regimensPage = regimensPage;
         this.dxtxPage = dxtxPage;
+        childrenConditionTitles = new ArrayList<>();
+        childrenConditionIds = new ArrayList<>();
+        if(children.size() !=0){
+                for (Condition c : children) {
+                    childrenConditionTitles.add(c.title);
+                    childrenConditionIds.add(c.id);
+                }
+        }
         Log.d("Condition", "Condition object created with name = " + title + " has " + String.valueOf(numberOfChildren()) + " children.");
 
     }

@@ -2,20 +2,97 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="gov.cdc.stdtxguide" >
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!--
+  Creates a custom permission so only this app can receive its messages.
+
+  NOTE: the permission *must* be called PACKAGE.permission.C2D_MESSAGE,
+        where PACKAGE is the application's package name.
+    -->
+    <permission
+        android:name="gov.cdc.stdtxguide.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="gov.cdc.stdtxguide.permission.C2D_MESSAGE" />
+
+    <!-- This app has permission to register and receive data message. -->
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:name=".AppManager"
+        android:theme="@style/AppCompatTheme">
+        <!--
+        Uncomment and add correct project IDs to enable pushwoosh.
+        &lt;!&ndash; Pushwoosh &ndash;&gt;
+        <meta-data
+            android:name="PW_APPID"
+            android:value="" />
+        <meta-data
+            android:name="PW_PROJECT_ID"
+            android:value="" />
+
+        <activity android:name="com.pushwoosh.richpages.RichPageActivity" />
+        <activity android:name="com.pushwoosh.MessageActivity" />
+        <activity android:name="com.pushwoosh.PushHandlerActivity" />
+
+        <receiver
+            android:name="com.google.android.gms.gcm.GcmReceiver"
+            android:exported="true"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+
+                <category android:name="gov.cdc.stdtxguide" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="com.pushwoosh.GCMListenerService"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </service>
+        <service
+            android:name="com.pushwoosh.GCMInstanceIDListenerService"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.google.android.gms.iid.InstanceID" />
+            </intent-filter>
+        </service>
+        <service
+            android:name="com.pushwoosh.GCMRegistrationService"
+            android:exported="false" >
+        </service>
+        &lt;!&ndash; end Pushwoosh &ndash;&gt;
+        -->
         <activity
-            android:name=".MainActivity"
+            android:name=".ConditionListActivity"
+            android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:label="@string/app_name" >
+            android:theme="@style/AppCompatTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".WebViewActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".ConditionDetailsActivity"
+            android:label="@string/title_activity_condition_details"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppCompatTheme" >
+        </activity>
     </application>
-    <uses-permission android:name="android.permission.INTERNET" />
+
 </manifest>
