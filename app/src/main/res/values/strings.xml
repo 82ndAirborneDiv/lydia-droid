@@ -19,6 +19,6 @@
     <string name="drawer_close">Close Drawer</string>
     <string name="cd_navdrawer_image">Navigation Drawer Image</string>
     <string name="title_activity_condition_list">Condition List</string>
-    <string name="title_activity_condition_details">Treatment Info</string>
+    <string name="title_activity_condition_details">Condition Details</string>
 
 </resources>

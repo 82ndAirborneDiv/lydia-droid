@@ -8,7 +8,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.TextView;
 import java.util.ArrayList;
 
@@ -20,6 +19,8 @@ public class ConditionListActivityFragment extends Fragment{
     private RecyclerView recyclerView;
     private ArrayList<String> conditionTitles;
     private ArrayList<Integer> conditionIds;
+    private TextView title;
+    private View divider;
 
     public static ConditionListActivityFragment newInstance(ArrayList<String> conditionTitles, ArrayList<Integer> conditionIds) {
         ConditionListActivityFragment conditionListActivityFragment = new ConditionListActivityFragment();
@@ -44,12 +45,32 @@ public class ConditionListActivityFragment extends Fragment{
         recyclerView = (RecyclerView) view.findViewById(R.id.condition_list_rv);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.addItemDecoration(new SimpleDividerItemDecoration(getActivity()));
-        adapter = new ConditionAdapter(conditionTitles, conditionIds);
+        adapter = new ConditionAdapter();
         recyclerView.setAdapter(adapter);
 
+        title = (TextView) view.findViewById(R.id.list_title);
+        divider = (View) view.findViewById(R.id.list_title_divider);
+
+        title.setText(generatePageTitle());
         return view;
     }
 
+    private String generatePageTitle(){
+        String pageTitle = "";
+        Condition condition = AppManager.conditionContent.getConditionWithId(conditionIds.get(0));
+        if(condition.breadcrumbs.size() >= 1){
+            pageTitle += condition.breadcrumbs.get(0);
+            for(int i = 1; i < condition.breadcrumbs.size(); i++){
+                pageTitle += " / " +condition.breadcrumbs.get(i);
+            }
+        }
+
+        if(pageTitle.equals("")){
+            title.setVisibility(View.GONE);
+           divider.setVisibility(View.GONE);
+        }
+        return pageTitle;
+    }
     @Override
     public void onResume() {
         super.onResume();
@@ -57,12 +78,8 @@ public class ConditionListActivityFragment extends Fragment{
     }
 
     private class ConditionAdapter extends RecyclerView.Adapter<ConditionHolder>{
-        private ArrayList<String> conditionTitles;
-        private ArrayList<Integer> conditionIds;
 
-        public ConditionAdapter(ArrayList<String> conditionTitles, ArrayList<Integer> conditionIds){
-            this.conditionTitles = conditionTitles;
-            this.conditionIds = conditionIds;
+        public ConditionAdapter(){
         }
 
         @Override

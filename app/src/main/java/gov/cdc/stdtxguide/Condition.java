@@ -13,6 +13,7 @@ public class Condition {
     public String title;
     public String regimensPage;
     public String dxtxPage;
+    public List<String> breadcrumbs;
     public List<Condition> childrenConditions;
     private ArrayList<String> childrenConditionTitles;
     private ArrayList<Integer> childrenConditionIds;
@@ -25,7 +26,8 @@ public class Condition {
         return childrenConditionIds;
     }
 
-    public Condition(int id, int parentId, String title, String regimensPage, String dxtxPage, List<Condition> children) {
+    public Condition(int id, int parentId, String title, String regimensPage, String dxtxPage,
+                     List<Condition> children, List<String> breadcrumbs) {
 
         this.id = id;
         this.parentId = parentId;
@@ -33,6 +35,7 @@ public class Condition {
         this.childrenConditions = children;
         this.regimensPage = regimensPage;
         this.dxtxPage = dxtxPage;
+        this.breadcrumbs = breadcrumbs;
         childrenConditionTitles = new ArrayList<>();
         childrenConditionIds = new ArrayList<>();
         if(children.size() !=0){

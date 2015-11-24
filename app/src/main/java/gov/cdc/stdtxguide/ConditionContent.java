@@ -119,6 +119,7 @@ public class ConditionContent {
 
         boolean hasChildren = false;
         List childrenConditions = null;
+        List breadcrumbs = null;
 
         reader.beginObject();
         while (reader.hasNext()) {
@@ -130,8 +131,8 @@ public class ConditionContent {
                 if (reader.peek() == JsonToken.NULL)
                     reader.skipValue();
                 else {
-                    id = reader.nextInt();
-                    Log.d("ConditionContent", "For JSON key parent value = " + Integer.toString(id));
+                    parentId = reader.nextInt();
+                    Log.d("ConditionContent", "For JSON key parent value = " + Integer.toString(parentId));
                 }
             } else if (name.equals("text")) {
                 text = reader.nextString();
@@ -147,13 +148,15 @@ public class ConditionContent {
                 Log.d("ConditionContent", "For JSON key hasChildren value = " + hasChildren);
             } else if (name.equals("children") && reader.peek() != JsonToken.NULL) {
                 childrenConditions = readChildrenArray(reader);
-            } else {
+            } else if (name.equals("breadcrumbs") && reader.peek() != JsonToken.NULL) {
+                breadcrumbs = readBreadcrumbsArray(reader);
+            }else {
                 reader.skipValue();
             }
         }
         reader.endObject();
 
-        Condition newCondition = new Condition(id, parentId, text, regimensPage, dxtxPage, childrenConditions);
+        Condition newCondition = new Condition(id, parentId, text, regimensPage, dxtxPage, childrenConditions, breadcrumbs);
         addConditionToIndex(newCondition);
         return newCondition;
     }
@@ -171,6 +174,25 @@ public class ConditionContent {
 
         return childrenConditions;
 
+    }
+
+    public List readBreadcrumbsArray(JsonReader reader) throws IOException{
+        List breadcrumbs = new ArrayList();
+        reader.beginArray();
+        while(reader.hasNext()){
+            reader.beginObject();
+            while(reader.hasNext()){
+                String name = reader.nextName();
+                if(name.equals("text"))
+                    breadcrumbs.add(reader.nextString());
+                else
+                    reader.skipValue();
+            }
+            reader.endObject();
+        }
+        reader.endArray();
+
+        return breadcrumbs;
     }
 
 
