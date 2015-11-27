@@ -1,4 +1,5 @@
 {
+    "childBreadcrumbs": "", 
     "childrenListViewPageId": "c0-clv", 
     "pageId": "c0", 
     "parent": null, 
@@ -16,6 +17,7 @@
     "hasRegimens": false, 
     "children": [
         {
+            "childBreadcrumbs": "Assault - Sexual", 
             "childrenListViewPageId": "c1-clv", 
             "pageId": "c1", 
             "parent": 0, 
@@ -39,6 +41,7 @@
             "hasDxTx": true
         }, 
         {
+            "childBreadcrumbs": "Bacterial Vaginosis", 
             "childrenListViewPageId": "c2-clv", 
             "pageId": "c2", 
             "parent": 0, 
@@ -63,6 +66,7 @@
             "hasDxTx": true
         }, 
         {
+            "childBreadcrumbs": "Candidiasis - Vulvovaginal", 
             "childrenListViewPageId": "c3-clv", 
             "pageId": "c3", 
             "parent": 0, 
@@ -80,6 +84,7 @@
             "hasRegimens": false, 
             "children": [
                 {
+                    "childBreadcrumbs": "Candidiasis - Vulvovaginal / Uncomplicated", 
                     "childrenListViewPageId": "c4-clv", 
                     "pageId": "c4", 
                     "parent": 3, 
@@ -108,6 +113,7 @@
                     "hasDxTx": true
                 }, 
                 {
+                    "childBreadcrumbs": "Candidiasis - Vulvovaginal / Complicated", 
                     "childrenListViewPageId": "c5-clv", 
                     "pageId": "c5", 
                     "parent": 3, 
@@ -137,6 +143,7 @@
             "hasDxTx": false
         }, 
         {
+            "childBreadcrumbs": "Cervicitis", 
             "childrenListViewPageId": "c6-clv", 
             "pageId": "c6", 
             "parent": 0, 
@@ -160,6 +167,7 @@
             "hasDxTx": true
         }, 
         {
+            "childBreadcrumbs": "Chancroid", 
             "childrenListViewPageId": "c7-clv", 
             "pageId": "c7", 
             "parent": 0, 
@@ -183,6 +191,7 @@
             "hasDxTx": true
         }, 
         {
+            "childBreadcrumbs": "Chlamydia", 
             "childrenListViewPageId": "c8-clv", 
             "pageId": "c8", 
             "parent": 0, 
@@ -200,13 +209,14 @@
             "hasRegimens": false, 
             "children": [
                 {
+                    "childBreadcrumbs": "Chlamydia / Adolescents and Adults", 
                     "childrenListViewPageId": "c9-clv", 
                     "pageId": "c9", 
                     "parent": 8, 
                     "hasChildren": false, 
                     "childrenListViewPage": "c9-clv.html", 
                     "dxtxPageId": "c9-t", 
-                    "text": "Adolescents & Adults", 
+                    "text": "Adolescents and Adults", 
                     "condition_id": 9, 
                     "dxtxPage": "c9-t.html", 
                     "regimensPage": "c9-r.html", 
@@ -229,6 +239,7 @@
                     "hasDxTx": true
                 }, 
                 {
+                    "childBreadcrumbs": "Chlamydia / In Pregnancy", 
                     "childrenListViewPageId": "c10-clv", 
                     "pageId": "c10", 
                     "parent": 8, 
@@ -258,6 +269,7 @@
                     "hasDxTx": true
                 }, 
                 {
+                    "childBreadcrumbs": "Chlamydia / Children", 
                     "childrenListViewPageId": "c11-clv", 
                     "pageId": "c11", 
                     "parent": 8, 
@@ -288,6 +300,7 @@
                     "hasDxTx": true
                 }, 
                 {
+                    "childBreadcrumbs": "Chlamydia / Infants", 
                     "childrenListViewPageId": "c12-clv", 
                     "pageId": "c12", 
                     "parent": 8, 
@@ -316,6 +329,7 @@
                     "hasDxTx": true
                 }, 
                 {
+                    "childBreadcrumbs": "Chlamydia / Neonates", 
                     "childrenListViewPageId": "c13-clv", 
                     "pageId": "c13", 
                     "parent": 8, 
@@ -347,6 +361,7 @@
             "hasDxTx": false
         }, 
         {
+            "childBreadcrumbs": "Epididymitis", 
             "childrenListViewPageId": "c14-clv", 
             "pageId": "c14", 
             "parent": 0, 
@@ -370,6 +385,7 @@
             "hasDxTx": true
         }, 
         {
+            "childBreadcrumbs": "Gonorrhea", 
             "childrenListViewPageId": "c15-clv", 
             "pageId": "c15", 
             "parent": 0, 
@@ -387,13 +403,14 @@
             "hasRegimens": false, 
             "children": [
                 {
+                    "childBreadcrumbs": "Gonorrhea / Adolescents and Adults", 
                     "childrenListViewPageId": "c16-clv", 
                     "pageId": "c16", 
                     "parent": 15, 
                     "hasChildren": true, 
                     "childrenListViewPage": "c16-clv.html", 
                     "dxtxPageId": "c16-t", 
-                    "text": "Adolescents & Adults", 
+                    "text": "Adolescents and Adults", 
                     "condition_id": 16, 
                     "dxtxPage": "", 
                     "regimensPage": "", 
@@ -409,6 +426,7 @@
                     "hasRegimens": false, 
                     "children": [
                         {
+                            "childBreadcrumbs": "Gonorrhea / Adolescents and Adults / Cervix, Urethra, or Rectum - Infection", 
                             "childrenListViewPageId": "c17-clv", 
                             "pageId": "c17", 
                             "parent": 16, 
@@ -429,7 +447,7 @@
                                     "link": "c15-clv.html"
                                 }, 
                                 {
-                                    "text": "Adolescents & Adults", 
+                                    "text": "Adolescents and Adults", 
                                     "link": "c16-clv.html"
                                 }
                             ], 
@@ -442,6 +460,7 @@
                             "hasDxTx": true
                         }, 
                         {
+                            "childBreadcrumbs": "Gonorrhea / Adolescents and Adults / Pharynx - Infection", 
                             "childrenListViewPageId": "c18-clv", 
                             "pageId": "c18", 
                             "parent": 16, 
@@ -461,7 +480,7 @@
                                     "link": "c15-clv.html"
                                 }, 
                                 {
-                                    "text": "Adolescents & Adults", 
+                                    "text": "Adolescents and Adults", 
                                     "link": "c16-clv.html"
                                 }
                             ], 
@@ -474,6 +493,7 @@
                             "hasDxTx": true
                         }, 
                         {
+                            "childBreadcrumbs": "Gonorrhea / Adolescents and Adults / Conjunctivitis", 
                             "childrenListViewPageId": "c19-clv", 
                             "pageId": "c19", 
                             "parent": 16, 
@@ -493,7 +513,7 @@
                                     "link": "c15-clv.html"
                                 }, 
                                 {
-                                    "text": "Adolescents & Adults", 
+                                    "text": "Adolescents and Adults", 
                                     "link": "c16-clv.html"
                                 }
                             ], 
@@ -506,6 +526,7 @@
                             "hasDxTx": true
                         }, 
                         {
+                            "childBreadcrumbs": "Gonorrhea / Adolescents and Adults / Disseminated Gonococcal Infection", 
                             "childrenListViewPageId": "c20-clv", 
                             "pageId": "c20", 
                             "parent": 16, 
@@ -527,7 +548,7 @@
                                     "link": "c15-clv.html"
                                 }, 
                                 {
-                                    "text": "Adolescents & Adults", 
+                                    "text": "Adolescents and Adults", 
                                     "link": "c16-clv.html"
                                 }
                             ], 
@@ -543,6 +564,7 @@
                     "hasDxTx": false
                 }, 
                 {
+                    "childBreadcrumbs": "Gonorrhea / Newborns", 
                     "childrenListViewPageId": "c21-clv", 
                     "pageId": "c21", 
                     "parent": 15, 
@@ -574,6 +596,7 @@
                     "hasDxTx": true
                 }, 
                 {
+                    "childBreadcrumbs": "Gonorrhea / Children", 
                     "childrenListViewPageId": "c22-clv", 
                     "pageId": "c22", 
                     "parent": 15, 
@@ -608,6 +631,7 @@
             "hasDxTx": false
         }, 
         {
+            "childBreadcrumbs": "Granuloma Inguinale", 
             "childrenListViewPageId": "c23-clv", 
             "pageId": "c23", 
             "parent": 0, 
@@ -632,6 +656,7 @@
             "hasDxTx": true
         }, 
         {
+            "childBreadcrumbs": "Hepatitis", 
             "childrenListViewPageId": "c24-clv", 
             "pageId": "c24", 
             "parent": 0, 
@@ -649,6 +674,7 @@
             "hasRegimens": false, 
             "children": [
                 {
+                    "childBreadcrumbs": "Hepatitis / Hepatitis A", 
                     "childrenListViewPageId": "c25-clv", 
                     "pageId": "c25", 
                     "parent": 24, 
@@ -675,6 +701,7 @@
                     "hasDxTx": true
                 }, 
                 {
+                    "childBreadcrumbs": "Hepatitis / Hepatitis B", 
                     "childrenListViewPageId": "c26-clv", 
                     "pageId": "c26", 
                     "parent": 24, 
@@ -701,6 +728,7 @@
                     "hasDxTx": true
                 }, 
                 {
+                    "childBreadcrumbs": "Hepatitis / Hepatitis C", 
                     "childrenListViewPageId": "c27-clv", 
                     "pageId": "c27", 
                     "parent": 24, 
@@ -730,6 +758,7 @@
             "hasDxTx": false
         }, 
         {
+            "childBreadcrumbs": "Herpes - Genital", 
             "childrenListViewPageId": "c28-clv", 
             "pageId": "c28", 
             "parent": 0, 
@@ -747,6 +776,7 @@
             "hasRegimens": false, 
             "children": [
                 {
+                    "childBreadcrumbs": "Herpes - Genital / First Episode", 
                     "childrenListViewPageId": "c29-clv", 
                     "pageId": "c29", 
                     "parent": 28, 
@@ -775,6 +805,7 @@
                     "hasDxTx": true
                 }, 
                 {
+                    "childBreadcrumbs": "Herpes - Genital / Recurrent Episode", 
                     "childrenListViewPageId": "c30-clv", 
                     "pageId": "c30", 
                     "parent": 28, 
@@ -804,6 +835,7 @@
                     "hasDxTx": true
                 }, 
                 {
+                    "childBreadcrumbs": "Herpes - Genital / HIV Positive", 
                     "childrenListViewPageId": "c31-clv", 
                     "pageId": "c31", 
                     "parent": 28, 
@@ -833,6 +865,7 @@
                     "hasDxTx": true
                 }, 
                 {
+                    "childBreadcrumbs": "Herpes - Genital / In Pregnancy", 
                     "childrenListViewPageId": "c32-clv", 
                     "pageId": "c32", 
                     "parent": 28, 
@@ -842,8 +875,10 @@
                     "text": "In Pregnancy", 
                     "condition_id": 32, 
                     "dxtxPage": "c32-t.html", 
-                    "regimensPage": "", 
-                    "regimens": [], 
+                    "regimensPage": "c32-r.html", 
+                    "regimens": [
+                        "herpes-pregnancy-recurrent-rec"
+                    ], 
                     "breadcrumbs": [
                         {
                             "text": "Herpes - Genital", 
@@ -854,11 +889,12 @@
                     "dxtx": [
                         "herpes-pregnancy"
                     ], 
-                    "hasRegimens": false, 
+                    "hasRegimens": true, 
                     "children": [], 
                     "hasDxTx": true
                 }, 
                 {
+                    "childBreadcrumbs": "Herpes - Genital / Neonates", 
                     "childrenListViewPageId": "c33-clv", 
                     "pageId": "c33", 
                     "parent": 28, 
@@ -888,6 +924,7 @@
             "hasDxTx": false
         }, 
         {
+            "childBreadcrumbs": "HIV", 
             "childrenListViewPageId": "c34-clv", 
             "pageId": "c34", 
             "parent": 0, 
@@ -909,13 +946,14 @@
             "hasDxTx": true
         }, 
         {
+            "childBreadcrumbs": "Human Papillomavirus", 
             "childrenListViewPageId": "c35-clv", 
             "pageId": "c35", 
             "parent": 0, 
             "hasChildren": false, 
             "childrenListViewPage": "c35-clv.html", 
             "dxtxPageId": "c35-t", 
-            "text": "Human Papilloma Virus", 
+            "text": "Human Papillomavirus", 
             "condition_id": 35, 
             "dxtxPage": "c35-t.html", 
             "regimensPage": "", 
@@ -930,6 +968,7 @@
             "hasDxTx": true
         }, 
         {
+            "childBreadcrumbs": "Lymphogranuloma Venereum", 
             "childrenListViewPageId": "c36-clv", 
             "pageId": "c36", 
             "parent": 0, 
@@ -954,22 +993,48 @@
             "hasDxTx": true
         }, 
         {
+            "childBreadcrumbs": "Nongonococcal Urethritis", 
             "childrenListViewPageId": "c37-clv", 
             "pageId": "c37", 
             "parent": 0, 
             "hasChildren": false, 
             "childrenListViewPage": "c37-clv.html", 
             "dxtxPageId": "c37-t", 
-            "text": "Pediculosis Pubis", 
+            "text": "Nongonococcal Urethritis", 
             "condition_id": 37, 
             "dxtxPage": "c37-t.html", 
             "regimensPage": "c37-r.html", 
+            "regimens": [
+                "urethritis-nongonococcal-rec", 
+                "urethritis-nongonococcal-alt"
+            ], 
+            "breadcrumbs": [], 
+            "regimensPageId": "c37-r", 
+            "dxtx": [
+                "urethritis-nongonococcal"
+            ], 
+            "hasRegimens": true, 
+            "children": [], 
+            "hasDxTx": true
+        }, 
+        {
+            "childBreadcrumbs": "Pediculosis Pubis", 
+            "childrenListViewPageId": "c38-clv", 
+            "pageId": "c38", 
+            "parent": 0, 
+            "hasChildren": false, 
+            "childrenListViewPage": "c38-clv.html", 
+            "dxtxPageId": "c38-t", 
+            "text": "Pediculosis Pubis", 
+            "condition_id": 38, 
+            "dxtxPage": "c38-t.html", 
+            "regimensPage": "c38-r.html", 
             "regimens": [
                 "pediculosis-pubis-rec", 
                 "pediculosis-pubis-alt"
             ], 
             "breadcrumbs": [], 
-            "regimensPageId": "c37-r", 
+            "regimensPageId": "c38-r", 
             "dxtx": [
                 "pediculosis-pubis"
             ], 
@@ -978,23 +1043,24 @@
             "hasDxTx": true
         }, 
         {
-            "childrenListViewPageId": "c38-clv", 
-            "pageId": "c38", 
+            "childBreadcrumbs": "Pelvic Inflammatory Disease", 
+            "childrenListViewPageId": "c39-clv", 
+            "pageId": "c39", 
             "parent": 0, 
             "hasChildren": false, 
-            "childrenListViewPage": "c38-clv.html", 
-            "dxtxPageId": "c38-t", 
+            "childrenListViewPage": "c39-clv.html", 
+            "dxtxPageId": "c39-t", 
             "text": "Pelvic Inflammatory Disease", 
-            "condition_id": 38, 
-            "dxtxPage": "c38-t.html", 
-            "regimensPage": "c38-r.html", 
+            "condition_id": 39, 
+            "dxtxPage": "c39-t.html", 
+            "regimensPage": "c39-r.html", 
             "regimens": [
                 "pid-parenteral-rec", 
                 "pid-parenteral-alt", 
                 "pid-im-oral-rec"
             ], 
             "breadcrumbs": [], 
-            "regimensPageId": "c38-r", 
+            "regimensPageId": "c39-r", 
             "dxtx": [
                 "pid"
             ], 
@@ -1003,21 +1069,22 @@
             "hasDxTx": true
         }, 
         {
-            "childrenListViewPageId": "c39-clv", 
-            "pageId": "c39", 
+            "childBreadcrumbs": "Proctitis", 
+            "childrenListViewPageId": "c40-clv", 
+            "pageId": "c40", 
             "parent": 0, 
             "hasChildren": false, 
-            "childrenListViewPage": "c39-clv.html", 
-            "dxtxPageId": "c39-t", 
-            "text": "Proctitis/Proctocolitis/Enteritis", 
-            "condition_id": 39, 
-            "dxtxPage": "c39-t.html", 
-            "regimensPage": "c39-r.html", 
+            "childrenListViewPage": "c40-clv.html", 
+            "dxtxPageId": "c40-t", 
+            "text": "Proctitis", 
+            "condition_id": 40, 
+            "dxtxPage": "c40-t.html", 
+            "regimensPage": "c40-r.html", 
             "regimens": [
                 "proctitis-rec"
             ], 
             "breadcrumbs": [], 
-            "regimensPageId": "c39-r", 
+            "regimensPageId": "c40-r", 
             "dxtx": [
                 "proctitis"
             ], 
@@ -1026,33 +1093,35 @@
             "hasDxTx": true
         }, 
         {
-            "childrenListViewPageId": "c40-clv", 
-            "pageId": "c40", 
+            "childBreadcrumbs": "Scabies", 
+            "childrenListViewPageId": "c41-clv", 
+            "pageId": "c41", 
             "parent": 0, 
             "hasChildren": true, 
-            "childrenListViewPage": "c40-clv.html", 
-            "dxtxPageId": "c40-t", 
+            "childrenListViewPage": "c41-clv.html", 
+            "dxtxPageId": "c41-t", 
             "text": "Scabies", 
-            "condition_id": 40, 
+            "condition_id": 41, 
             "dxtxPage": "", 
             "regimensPage": "", 
             "regimens": [], 
             "breadcrumbs": [], 
-            "regimensPageId": "c40-r", 
+            "regimensPageId": "c41-r", 
             "dxtx": [], 
             "hasRegimens": false, 
             "children": [
                 {
-                    "childrenListViewPageId": "c41-clv", 
-                    "pageId": "c41", 
-                    "parent": 40, 
+                    "childBreadcrumbs": "Scabies / Classic", 
+                    "childrenListViewPageId": "c42-clv", 
+                    "pageId": "c42", 
+                    "parent": 41, 
                     "hasChildren": false, 
-                    "childrenListViewPage": "c41-clv.html", 
-                    "dxtxPageId": "c41-t", 
+                    "childrenListViewPage": "c42-clv.html", 
+                    "dxtxPageId": "c42-t", 
                     "text": "Classic", 
-                    "condition_id": 41, 
-                    "dxtxPage": "c41-t.html", 
-                    "regimensPage": "c41-r.html", 
+                    "condition_id": 42, 
+                    "dxtxPage": "c42-t.html", 
+                    "regimensPage": "c42-r.html", 
                     "regimens": [
                         "scabies-classic-rec", 
                         "scabies-classic-alt"
@@ -1060,10 +1129,10 @@
                     "breadcrumbs": [
                         {
                             "text": "Scabies", 
-                            "link": "c40-clv.html"
+                            "link": "c41-clv.html"
                         }
                     ], 
-                    "regimensPageId": "c41-r", 
+                    "regimensPageId": "c42-r", 
                     "dxtx": [
                         "scabies-classic"
                     ], 
@@ -1072,24 +1141,25 @@
                     "hasDxTx": true
                 }, 
                 {
-                    "childrenListViewPageId": "c42-clv", 
-                    "pageId": "c42", 
-                    "parent": 40, 
+                    "childBreadcrumbs": "Scabies / Crusted", 
+                    "childrenListViewPageId": "c43-clv", 
+                    "pageId": "c43", 
+                    "parent": 41, 
                     "hasChildren": false, 
-                    "childrenListViewPage": "c42-clv.html", 
-                    "dxtxPageId": "c42-t", 
+                    "childrenListViewPage": "c43-clv.html", 
+                    "dxtxPageId": "c43-t", 
                     "text": "Crusted", 
-                    "condition_id": 42, 
-                    "dxtxPage": "c42-t.html", 
+                    "condition_id": 43, 
+                    "dxtxPage": "c43-t.html", 
                     "regimensPage": "", 
                     "regimens": [], 
                     "breadcrumbs": [
                         {
                             "text": "Scabies", 
-                            "link": "c40-clv.html"
+                            "link": "c41-clv.html"
                         }
                     ], 
-                    "regimensPageId": "c42-r", 
+                    "regimensPageId": "c43-r", 
                     "dxtx": [
                         "scabies-crusted"
                     ], 
@@ -1101,33 +1171,35 @@
             "hasDxTx": false
         }, 
         {
-            "childrenListViewPageId": "c43-clv", 
-            "pageId": "c43", 
+            "childBreadcrumbs": "Syphilis", 
+            "childrenListViewPageId": "c44-clv", 
+            "pageId": "c44", 
             "parent": 0, 
             "hasChildren": true, 
-            "childrenListViewPage": "c43-clv.html", 
-            "dxtxPageId": "c43-t", 
+            "childrenListViewPage": "c44-clv.html", 
+            "dxtxPageId": "c44-t", 
             "text": "Syphilis", 
-            "condition_id": 43, 
+            "condition_id": 44, 
             "dxtxPage": "", 
             "regimensPage": "", 
             "regimens": [], 
             "breadcrumbs": [], 
-            "regimensPageId": "c43-r", 
+            "regimensPageId": "c44-r", 
             "dxtx": [], 
             "hasRegimens": false, 
             "children": [
                 {
-                    "childrenListViewPageId": "c44-clv", 
-                    "pageId": "c44", 
-                    "parent": 43, 
+                    "childBreadcrumbs": "Syphilis / Primary and Secondary", 
+                    "childrenListViewPageId": "c45-clv", 
+                    "pageId": "c45", 
+                    "parent": 44, 
                     "hasChildren": false, 
-                    "childrenListViewPage": "c44-clv.html", 
-                    "dxtxPageId": "c44-t", 
+                    "childrenListViewPage": "c45-clv.html", 
+                    "dxtxPageId": "c45-t", 
                     "text": "Primary and Secondary", 
-                    "condition_id": 44, 
-                    "dxtxPage": "c44-t.html", 
-                    "regimensPage": "c44-r.html", 
+                    "condition_id": 45, 
+                    "dxtxPage": "c45-t.html", 
+                    "regimensPage": "c45-r.html", 
                     "regimens": [
                         "syphilis-primary-adult-rec", 
                         "syphilis-primary-child-rec"
@@ -1135,10 +1207,10 @@
                     "breadcrumbs": [
                         {
                             "text": "Syphilis", 
-                            "link": "c43-clv.html"
+                            "link": "c44-clv.html"
                         }
                     ], 
-                    "regimensPageId": "c44-r", 
+                    "regimensPageId": "c45-r", 
                     "dxtx": [
                         "syphilis-primary"
                     ], 
@@ -1147,16 +1219,17 @@
                     "hasDxTx": true
                 }, 
                 {
-                    "childrenListViewPageId": "c45-clv", 
-                    "pageId": "c45", 
-                    "parent": 43, 
+                    "childBreadcrumbs": "Syphilis / Latent", 
+                    "childrenListViewPageId": "c46-clv", 
+                    "pageId": "c46", 
+                    "parent": 44, 
                     "hasChildren": false, 
-                    "childrenListViewPage": "c45-clv.html", 
-                    "dxtxPageId": "c45-t", 
+                    "childrenListViewPage": "c46-clv.html", 
+                    "dxtxPageId": "c46-t", 
                     "text": "Latent", 
-                    "condition_id": 45, 
-                    "dxtxPage": "c45-t.html", 
-                    "regimensPage": "c45-r.html", 
+                    "condition_id": 46, 
+                    "dxtxPage": "c46-t.html", 
+                    "regimensPage": "c46-r.html", 
                     "regimens": [
                         "syphilis-latent-adult-rec", 
                         "syphilis-latent-child-rec"
@@ -1164,10 +1237,10 @@
                     "breadcrumbs": [
                         {
                             "text": "Syphilis", 
-                            "link": "c43-clv.html"
+                            "link": "c44-clv.html"
                         }
                     ], 
-                    "regimensPageId": "c45-r", 
+                    "regimensPageId": "c46-r", 
                     "dxtx": [
                         "syphilis-latent"
                     ], 
@@ -1176,26 +1249,27 @@
                     "hasDxTx": true
                 }, 
                 {
-                    "childrenListViewPageId": "c46-clv", 
-                    "pageId": "c46", 
-                    "parent": 43, 
+                    "childBreadcrumbs": "Syphilis / Tertiary", 
+                    "childrenListViewPageId": "c47-clv", 
+                    "pageId": "c47", 
+                    "parent": 44, 
                     "hasChildren": false, 
-                    "childrenListViewPage": "c46-clv.html", 
-                    "dxtxPageId": "c46-t", 
+                    "childrenListViewPage": "c47-clv.html", 
+                    "dxtxPageId": "c47-t", 
                     "text": "Tertiary", 
-                    "condition_id": 46, 
-                    "dxtxPage": "c46-t.html", 
-                    "regimensPage": "c46-r.html", 
+                    "condition_id": 47, 
+                    "dxtxPage": "c47-t.html", 
+                    "regimensPage": "c47-r.html", 
                     "regimens": [
                         "syphilis-tertiary-rec"
                     ], 
                     "breadcrumbs": [
                         {
                             "text": "Syphilis", 
-                            "link": "c43-clv.html"
+                            "link": "c44-clv.html"
                         }
                     ], 
-                    "regimensPageId": "c46-r", 
+                    "regimensPageId": "c47-r", 
                     "dxtx": [
                         "syphilis-tertiary"
                     ], 
@@ -1204,16 +1278,17 @@
                     "hasDxTx": true
                 }, 
                 {
-                    "childrenListViewPageId": "c47-clv", 
-                    "pageId": "c47", 
-                    "parent": 43, 
+                    "childBreadcrumbs": "Syphilis / Neurosyphilis and Ocular Syphilis", 
+                    "childrenListViewPageId": "c48-clv", 
+                    "pageId": "c48", 
+                    "parent": 44, 
                     "hasChildren": false, 
-                    "childrenListViewPage": "c47-clv.html", 
-                    "dxtxPageId": "c47-t", 
-                    "text": "Neurosyphilis", 
-                    "condition_id": 47, 
-                    "dxtxPage": "c47-t.html", 
-                    "regimensPage": "c47-r.html", 
+                    "childrenListViewPage": "c48-clv.html", 
+                    "dxtxPageId": "c48-t", 
+                    "text": "Neurosyphilis and Ocular Syphilis", 
+                    "condition_id": 48, 
+                    "dxtxPage": "c48-t.html", 
+                    "regimensPage": "c48-r.html", 
                     "regimens": [
                         "syphilis-neurosyphilis-rec", 
                         "syphilis-neurosyphilis-alt"
@@ -1221,10 +1296,10 @@
                     "breadcrumbs": [
                         {
                             "text": "Syphilis", 
-                            "link": "c43-clv.html"
+                            "link": "c44-clv.html"
                         }
                     ], 
-                    "regimensPageId": "c47-r", 
+                    "regimensPageId": "c48-r", 
                     "dxtx": [
                         "syphilis-neurosyphilis"
                     ], 
@@ -1233,16 +1308,17 @@
                     "hasDxTx": true
                 }, 
                 {
-                    "childrenListViewPageId": "c48-clv", 
-                    "pageId": "c48", 
-                    "parent": 43, 
+                    "childBreadcrumbs": "Syphilis / In Persons with HIV Infection", 
+                    "childrenListViewPageId": "c49-clv", 
+                    "pageId": "c49", 
+                    "parent": 44, 
                     "hasChildren": false, 
-                    "childrenListViewPage": "c48-clv.html", 
-                    "dxtxPageId": "c48-t", 
+                    "childrenListViewPage": "c49-clv.html", 
+                    "dxtxPageId": "c49-t", 
                     "text": "In Persons with HIV Infection", 
-                    "condition_id": 48, 
-                    "dxtxPage": "c48-t.html", 
-                    "regimensPage": "c48-r.html", 
+                    "condition_id": 49, 
+                    "dxtxPage": "c49-t.html", 
+                    "regimensPage": "c49-r.html", 
                     "regimens": [
                         "syphilis-hiv-primary-rec", 
                         "syphilis-hiv-latent-early-rec", 
@@ -1251,10 +1327,10 @@
                     "breadcrumbs": [
                         {
                             "text": "Syphilis", 
-                            "link": "c43-clv.html"
+                            "link": "c44-clv.html"
                         }
                     ], 
-                    "regimensPageId": "c48-r", 
+                    "regimensPageId": "c49-r", 
                     "dxtx": [
                         "syphilis-hiv"
                     ], 
@@ -1263,24 +1339,25 @@
                     "hasDxTx": true
                 }, 
                 {
-                    "childrenListViewPageId": "c49-clv", 
-                    "pageId": "c49", 
-                    "parent": 43, 
+                    "childBreadcrumbs": "Syphilis / In Pregnancy", 
+                    "childrenListViewPageId": "c50-clv", 
+                    "pageId": "c50", 
+                    "parent": 44, 
                     "hasChildren": false, 
-                    "childrenListViewPage": "c49-clv.html", 
-                    "dxtxPageId": "c49-t", 
+                    "childrenListViewPage": "c50-clv.html", 
+                    "dxtxPageId": "c50-t", 
                     "text": "In Pregnancy", 
-                    "condition_id": 49, 
-                    "dxtxPage": "c49-t.html", 
+                    "condition_id": 50, 
+                    "dxtxPage": "c50-t.html", 
                     "regimensPage": "", 
                     "regimens": [], 
                     "breadcrumbs": [
                         {
                             "text": "Syphilis", 
-                            "link": "c43-clv.html"
+                            "link": "c44-clv.html"
                         }
                     ], 
-                    "regimensPageId": "c49-r", 
+                    "regimensPageId": "c50-r", 
                     "dxtx": [
                         "syphilis-pregnancy"
                     ], 
@@ -1289,38 +1366,40 @@
                     "hasDxTx": true
                 }, 
                 {
-                    "childrenListViewPageId": "c50-clv", 
-                    "pageId": "c50", 
-                    "parent": 43, 
+                    "childBreadcrumbs": "Syphilis / Congenital", 
+                    "childrenListViewPageId": "c51-clv", 
+                    "pageId": "c51", 
+                    "parent": 44, 
                     "hasChildren": true, 
-                    "childrenListViewPage": "c50-clv.html", 
-                    "dxtxPageId": "c50-t", 
-                    "text": "Congential", 
-                    "condition_id": 50, 
+                    "childrenListViewPage": "c51-clv.html", 
+                    "dxtxPageId": "c51-t", 
+                    "text": "Congenital", 
+                    "condition_id": 51, 
                     "dxtxPage": "", 
                     "regimensPage": "", 
                     "regimens": [], 
                     "breadcrumbs": [
                         {
                             "text": "Syphilis", 
-                            "link": "c43-clv.html"
+                            "link": "c44-clv.html"
                         }
                     ], 
-                    "regimensPageId": "c50-r", 
+                    "regimensPageId": "c51-r", 
                     "dxtx": [], 
                     "hasRegimens": false, 
                     "children": [
                         {
-                            "childrenListViewPageId": "c51-clv", 
-                            "pageId": "c51", 
-                            "parent": 50, 
+                            "childBreadcrumbs": "Syphilis / Congenital / Neonates", 
+                            "childrenListViewPageId": "c52-clv", 
+                            "pageId": "c52", 
+                            "parent": 51, 
                             "hasChildren": false, 
-                            "childrenListViewPage": "c51-clv.html", 
-                            "dxtxPageId": "c51-t", 
+                            "childrenListViewPage": "c52-clv.html", 
+                            "dxtxPageId": "c52-t", 
                             "text": "Neonates", 
-                            "condition_id": 51, 
-                            "dxtxPage": "c51-t.html", 
-                            "regimensPage": "c51-r.html", 
+                            "condition_id": 52, 
+                            "dxtxPage": "c52-t.html", 
+                            "regimensPage": "c52-r.html", 
                             "regimens": [
                                 "syphilis-congenital-neonate-proven", 
                                 "syphilis-congenital-neonate-possible", 
@@ -1330,14 +1409,14 @@
                             "breadcrumbs": [
                                 {
                                     "text": "Syphilis", 
-                                    "link": "c43-clv.html"
+                                    "link": "c44-clv.html"
                                 }, 
                                 {
-                                    "text": "Congential", 
-                                    "link": "c50-clv.html"
+                                    "text": "Congenital", 
+                                    "link": "c51-clv.html"
                                 }
                             ], 
-                            "regimensPageId": "c51-r", 
+                            "regimensPageId": "c52-r", 
                             "dxtx": [
                                 "syphilis-congenital-first-month"
                             ], 
@@ -1346,30 +1425,31 @@
                             "hasDxTx": true
                         }, 
                         {
-                            "childrenListViewPageId": "c52-clv", 
-                            "pageId": "c52", 
-                            "parent": 50, 
+                            "childBreadcrumbs": "Syphilis / Congenital / Older Infants and Children", 
+                            "childrenListViewPageId": "c53-clv", 
+                            "pageId": "c53", 
+                            "parent": 51, 
                             "hasChildren": false, 
-                            "childrenListViewPage": "c52-clv.html", 
-                            "dxtxPageId": "c52-t", 
+                            "childrenListViewPage": "c53-clv.html", 
+                            "dxtxPageId": "c53-t", 
                             "text": "Older Infants and Children", 
-                            "condition_id": 52, 
-                            "dxtxPage": "c52-t.html", 
-                            "regimensPage": "c52-r.html", 
+                            "condition_id": 53, 
+                            "dxtxPage": "c53-t.html", 
+                            "regimensPage": "c53-r.html", 
                             "regimens": [
                                 "syphilis-congenital-infant"
                             ], 
                             "breadcrumbs": [
                                 {
                                     "text": "Syphilis", 
-                                    "link": "c43-clv.html"
+                                    "link": "c44-clv.html"
                                 }, 
                                 {
-                                    "text": "Congential", 
-                                    "link": "c50-clv.html"
+                                    "text": "Congenital", 
+                                    "link": "c51-clv.html"
                                 }
                             ], 
-                            "regimensPageId": "c52-r", 
+                            "regimensPageId": "c53-r", 
                             "dxtx": [
                                 "syphilis-congenital-infant"
                             ], 
@@ -1384,22 +1464,23 @@
             "hasDxTx": false
         }, 
         {
-            "childrenListViewPageId": "c53-clv", 
-            "pageId": "c53", 
+            "childBreadcrumbs": "Trichomoniasis", 
+            "childrenListViewPageId": "c54-clv", 
+            "pageId": "c54", 
             "parent": 0, 
             "hasChildren": false, 
-            "childrenListViewPage": "c53-clv.html", 
-            "dxtxPageId": "c53-t", 
+            "childrenListViewPage": "c54-clv.html", 
+            "dxtxPageId": "c54-t", 
             "text": "Trichomoniasis", 
-            "condition_id": 53, 
-            "dxtxPage": "c53-t.html", 
-            "regimensPage": "c53-r.html", 
+            "condition_id": 54, 
+            "dxtxPage": "c54-t.html", 
+            "regimensPage": "c54-r.html", 
             "regimens": [
                 "trichomoniasis-rec", 
                 "trichomoniasis-alt"
             ], 
             "breadcrumbs": [], 
-            "regimensPageId": "c53-r", 
+            "regimensPageId": "c54-r", 
             "dxtx": [
                 "trichomoniasis"
             ], 
@@ -1408,65 +1489,17 @@
             "hasDxTx": true
         }, 
         {
-            "childrenListViewPageId": "c54-clv", 
-            "pageId": "c54", 
-            "parent": 0, 
-            "hasChildren": true, 
-            "childrenListViewPage": "c54-clv.html", 
-            "dxtxPageId": "c54-t", 
-            "text": "Urethritis", 
-            "condition_id": 54, 
-            "dxtxPage": "", 
-            "regimensPage": "", 
-            "regimens": [], 
-            "breadcrumbs": [], 
-            "regimensPageId": "c54-r", 
-            "dxtx": [], 
-            "hasRegimens": false, 
-            "children": [
-                {
-                    "childrenListViewPageId": "c55-clv", 
-                    "pageId": "c55", 
-                    "parent": 54, 
-                    "hasChildren": false, 
-                    "childrenListViewPage": "c55-clv.html", 
-                    "dxtxPageId": "c55-t", 
-                    "text": "Nongonococcal Urethritis", 
-                    "condition_id": 55, 
-                    "dxtxPage": "c55-t.html", 
-                    "regimensPage": "c55-r.html", 
-                    "regimens": [
-                        "urethritis-nongonococcal-rec", 
-                        "urethritis-nongonococcal-alt"
-                    ], 
-                    "breadcrumbs": [
-                        {
-                            "text": "Urethritis", 
-                            "link": "c54-clv.html"
-                        }
-                    ], 
-                    "regimensPageId": "c55-r", 
-                    "dxtx": [
-                        "urethritis-nongonococcal"
-                    ], 
-                    "hasRegimens": true, 
-                    "children": [], 
-                    "hasDxTx": true
-                }
-            ], 
-            "hasDxTx": false
-        }, 
-        {
-            "childrenListViewPageId": "c56-clv", 
-            "pageId": "c56", 
+            "childBreadcrumbs": "Warts - Genital", 
+            "childrenListViewPageId": "c55-clv", 
+            "pageId": "c55", 
             "parent": 0, 
             "hasChildren": false, 
-            "childrenListViewPage": "c56-clv.html", 
-            "dxtxPageId": "c56-t", 
+            "childrenListViewPage": "c55-clv.html", 
+            "dxtxPageId": "c55-t", 
             "text": "Warts - Genital", 
-            "condition_id": 56, 
-            "dxtxPage": "c56-t.html", 
-            "regimensPage": "c56-r.html", 
+            "condition_id": 55, 
+            "dxtxPage": "c55-t.html", 
+            "regimensPage": "c55-r.html", 
             "regimens": [
                 "warts-external", 
                 "warts-cervical", 
@@ -1475,7 +1508,7 @@
                 "warts-anal"
             ], 
             "breadcrumbs": [], 
-            "regimensPageId": "c56-r", 
+            "regimensPageId": "c55-r", 
             "dxtx": [
                 "warts-genital"
             ], 
