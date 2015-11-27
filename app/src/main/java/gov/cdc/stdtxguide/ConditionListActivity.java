@@ -1,7 +1,6 @@
 package gov.cdc.stdtxguide;
 
 import android.os.Bundle;
-import android.app.Activity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
@@ -25,8 +24,8 @@ public class ConditionListActivity extends BaseActivity {
     private void addConditionListFragment(){
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
-        ConditionListActivityFragment fragment =
-                ConditionListActivityFragment
+        ConditionListFragment fragment =
+                ConditionListFragment
                         .newInstance(AppManager.conditionContent.getChildContentTitles(),
                                 AppManager.conditionContent.getChildContentIds());
         transaction.add(R.id.fragment_container, fragment);

@@ -1,5 +1,10 @@
 package gov.cdc.stdtxguide;
 
+import android.annotation.TargetApi;
+import android.content.Intent;
+import android.os.Build;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
@@ -14,7 +19,7 @@ import java.util.ArrayList;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class ConditionListActivityFragment extends Fragment{
+public class ConditionListFragment extends Fragment{
     private ConditionAdapter adapter;
     private RecyclerView recyclerView;
     private ArrayList<String> conditionTitles;
@@ -22,13 +27,13 @@ public class ConditionListActivityFragment extends Fragment{
     private TextView title;
     private View divider;
 
-    public static ConditionListActivityFragment newInstance(ArrayList<String> conditionTitles, ArrayList<Integer> conditionIds) {
-        ConditionListActivityFragment conditionListActivityFragment = new ConditionListActivityFragment();
+    public static ConditionListFragment newInstance(ArrayList<String> conditionTitles, ArrayList<Integer> conditionIds) {
+        ConditionListFragment conditionListFragment = new ConditionListFragment();
         Bundle args = new Bundle();
         args.putStringArrayList("conditionTitles", conditionTitles);
         args.putIntegerArrayList("conditionIds", conditionIds);
-        conditionListActivityFragment.setArguments(args);
-        return conditionListActivityFragment;
+        conditionListFragment.setArguments(args);
+        return conditionListFragment;
     }
 
     @Override
@@ -49,7 +54,7 @@ public class ConditionListActivityFragment extends Fragment{
         recyclerView.setAdapter(adapter);
 
         title = (TextView) view.findViewById(R.id.list_title);
-        divider = (View) view.findViewById(R.id.list_title_divider);
+        divider = view.findViewById(R.id.list_title_divider);
 
         title.setText(generatePageTitle());
         return view;
@@ -90,23 +95,34 @@ public class ConditionListActivityFragment extends Fragment{
         }
 
         @Override
-        public void onBindViewHolder(ConditionHolder holder, int position) {
+        public void onBindViewHolder(final ConditionHolder holder, int position) {
             final Condition condition = AppManager.conditionContent.getConditionWithId(conditionIds.get(position));
             holder.conditionTitle.setText(conditionTitles.get(position));
+            final String transitionName = getString(R.string.title_transition);
             holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @TargetApi(Build.VERSION_CODES.KITKAT)
                 @Override
                 public void onClick(View v) {
                     if(condition.numberOfChildren()==0){
-                        startActivity(ConditionDetailsActivity.newIntent(getContext(), condition));
+                        Intent intent = ConditionDetailsActivity.newIntent(getContext(), condition);
+                        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(),
+                                holder.conditionTitle, transitionName);
+                        ActivityCompat.startActivity(getActivity(), intent, options.toBundle());
+                        //startActivity(intent);
                      } else {
+
+
                         FragmentTransaction transaction = getFragmentManager().beginTransaction();
 
                          // Create new fragment and transaction
-                        ConditionListActivityFragment newFragment =
-                            ConditionListActivityFragment
+                        ConditionListFragment newFragment =
+                            ConditionListFragment
                                     .newInstance(condition.getChildrenConditionTitles(),
                                             condition.getChildrenConditionIds());
-                        transaction.replace(R.id.fragment_container, newFragment);
+
+                        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                        .replace(R.id.fragment_container, newFragment);
+
                         transaction.addToBackStack("Condition Pick Fragment");
                         transaction.commit();
                     }

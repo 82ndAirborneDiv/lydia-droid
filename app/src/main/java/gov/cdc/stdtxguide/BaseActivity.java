@@ -123,6 +123,10 @@ public class BaseActivity extends AppCompatActivity {
                                 intent.putExtra("toolbarTitle", "User License Agreement");
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             }
+                            if (menuItem.getItemId() == R.id.nav_settings) {
+                                intent = new Intent(getApplicationContext(), SettingsActivity.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            }
                             if (intent != null) startActivity(intent);
                             mDrawerLayout.closeDrawers();
                         }

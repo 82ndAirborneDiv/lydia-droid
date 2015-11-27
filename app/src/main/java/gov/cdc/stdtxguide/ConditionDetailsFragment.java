@@ -29,7 +29,7 @@ public class ConditionDetailsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater
-                .inflate(R.layout.fragment_condition_details_treatment, container, false);
+                .inflate(R.layout.fragment_condition_details, container, false);
         webView = (WebView) rootView.findViewById(R.id.condition_web_view);
         webView.getSettings().setJavaScriptEnabled(false);
         webView.loadUrl("file:///android_asset/content/" + page);

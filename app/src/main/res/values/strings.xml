@@ -20,5 +20,8 @@
     <string name="cd_navdrawer_image">Navigation Drawer Image</string>
     <string name="title_activity_condition_list">Condition List</string>
     <string name="title_activity_condition_details">Condition Details</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="allow_push_notifications">Allow Push Notifications</string>
+    <string name="title_transition">Title Transition</string>
 
 </resources>
