@@ -3,6 +3,7 @@ package gov.cdc.stdtxguide;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -109,9 +110,16 @@ public class BaseActivity extends AppCompatActivity {
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             }
                             if (menuItem.getItemId() == R.id.nav_sexual_history) {
-                                intent = WebViewActivity.newIntent(getApplicationContext(), "sexualhistory.html");
-                                intent.putExtra("toolbarTitle", "Taking a Sexual History");
-                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                                    intent = new Intent(getApplicationContext(), PDFActivity.class);
+                                    intent.putExtra("pdfName", "sexualhistory.pdf");
+                                    intent.putExtra("toolbarTitle", "Taking a Sexual History");
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                } else {
+                                    intent = WebViewActivity.newIntent(getApplicationContext(), "sexualhistory.html");
+                                    intent.putExtra("toolbarTitle", "Taking a Sexual History");
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                }
                             }
                             if (menuItem.getItemId() == R.id.nav_about_us) {
                                 intent = WebViewActivity.newIntent(getApplicationContext(), "about_us.html");

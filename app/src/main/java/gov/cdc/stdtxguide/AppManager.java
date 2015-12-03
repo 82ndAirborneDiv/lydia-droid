@@ -2,8 +2,16 @@ package gov.cdc.stdtxguide;
 
 import android.app.Application;
 import android.content.SharedPreferences;
+import android.content.res.AssetManager;
+import android.util.Log;
 
 import com.pushwoosh.PushManager;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 /**AppManager.java
  * lydia-droid
@@ -17,6 +25,7 @@ public class AppManager extends Application {
     public static ConditionContent conditionContent;
     //public static SiteCatalystController sc;
     public static PushManager pushManager;
+    public static File sexualHistoryPdf;
 
     @Override
     public void onCreate() {
@@ -29,8 +38,16 @@ public class AppManager extends Application {
         //Create global instance of ConditionContent to reduce duplicate processing
         conditionContent = new ConditionContent(getApplicationContext());
 
+        try {
+            copyPdfAssetsToStorage();
+        } catch (IOException e){
+            Log.e("copyFailed", "copyFailed", e);
+        }
+        sexualHistoryPdf = new File(getFilesDir(), "sexualhistory.pdf");
+
         if(pref.getBoolean(STDTxGuidePreferences.FIRST_LAUNCH, true)){
             setDefaultPrefs();
+
             editor.putBoolean(STDTxGuidePreferences.FIRST_LAUNCH, false).commit();
         }
 
@@ -61,5 +78,30 @@ public class AppManager extends Application {
         editor.putBoolean(STDTxGuidePreferences.AGREED_TO_EULA, false);
         editor.commit();
     }
+    private void copyPdfAssetsToStorage() throws IOException{
+        AssetManager assetManager = getAssets();
+
+        InputStream in = null;
+        OutputStream out = null;
+
+        try {
+            in = assetManager.open("sexualhistory.pdf");
+            File outFile = new File(getFilesDir(), "sexualhistory.pdf");
+            out = new FileOutputStream(outFile);
+
+            byte[] buffer = new byte[1024];
+            int read;
+            while((read = in.read(buffer)) != -1){
+                out.write(buffer, 0, read);
+            }
+        } catch (IOException e){
+            Log.e("copyPDF", "Failed to copy asset file", e);
+        }
+        finally {
+            out.close();
+            in.close();
+
+        }
+}
 }
 
