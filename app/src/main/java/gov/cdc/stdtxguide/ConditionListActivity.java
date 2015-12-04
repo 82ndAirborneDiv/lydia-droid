@@ -3,6 +3,7 @@ package gov.cdc.stdtxguide;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.Gravity;
 
 public class ConditionListActivity extends BaseActivity {
 
@@ -13,6 +14,15 @@ public class ConditionListActivity extends BaseActivity {
         setupToolbar();
         initNavigationDrawer();
         addConditionListFragment();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if(!AppManager.pref.getBoolean(STDTxGuidePreferences.DISPLAY_NAV_DRAWER_ON_FIRST_LAUNCH, false)){
+            mDrawerLayout.openDrawer(Gravity.LEFT);
+            AppManager.editor.putBoolean(STDTxGuidePreferences.DISPLAY_NAV_DRAWER_ON_FIRST_LAUNCH, true).commit();
+        }
     }
 
     @Override

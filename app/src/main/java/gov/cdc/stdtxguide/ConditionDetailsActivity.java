@@ -41,6 +41,8 @@ public class ConditionDetailsActivity extends BaseActivity {
         breadcrumbs = getIntent().getStringArrayListExtra("breadcrumbs");
         title = getIntent().getStringExtra("title");
 
+        AppManager.sc.trackNavigationEvent(title, Constants.SC_SECTION_CONDITIONS);
+
         viewPager = (ViewPager) findViewById(R.id.pager);
         ContentPagerAdapter adapter = new ContentPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
@@ -59,7 +61,15 @@ public class ConditionDetailsActivity extends BaseActivity {
 
             @Override
             public void onPageSelected(int position) {
-
+                if (position == 0) {
+                    if (regimensPage.equals("")) {
+                        AppManager.sc.trackContentBrowseEvent(title, Constants.SC_SECTION_CONDITION_DETAILS_MORE_INFO);
+                    } else {
+                        AppManager.sc.trackContentBrowseEvent(title, Constants.SC_SECTION_CONDITION_DETAILS_TREATMENTS);
+                    }
+                } else {
+                    AppManager.sc.trackContentBrowseEvent(title, Constants.SC_SECTION_CONDITION_DETAILS_MORE_INFO);
+                }
             }
 
             @Override
@@ -67,6 +77,7 @@ public class ConditionDetailsActivity extends BaseActivity {
 
             }
         });
+
 
 
     }
@@ -114,17 +125,21 @@ public class ConditionDetailsActivity extends BaseActivity {
         public android.support.v4.app.Fragment getItem(int position) {
             if(tabTitles.length == 1){
                 if(tabTitles[0].equals("Treatments")){
+                    AppManager.sc.trackContentBrowseEvent(title, Constants.SC_SECTION_CONDITION_DETAILS_TREATMENTS);
                     return new ConditionDetailsFragment().newInstance(regimensPage);
                 }
                 else if(tabTitles[0].equals("More Info")){
+                    AppManager.sc.trackContentBrowseEvent(title, Constants.SC_SECTION_CONDITION_DETAILS_MORE_INFO);
                     return new ConditionDetailsFragment().newInstance(dxtxPage);
                 }
             } else {
                 if(position == 0){
+                    AppManager.sc.trackContentBrowseEvent(title, Constants.SC_SECTION_CONDITION_DETAILS_TREATMENTS);
                     return new ConditionDetailsFragment().newInstance(regimensPage);
                 }
-                else
+                else {
                     return new ConditionDetailsFragment().newInstance(dxtxPage);
+                }
             }
             return null;
         }

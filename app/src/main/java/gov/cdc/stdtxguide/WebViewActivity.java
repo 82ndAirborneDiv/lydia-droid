@@ -43,7 +43,7 @@ public class WebViewActivity extends BaseActivity {
 
         }
 
-/*        @Override
+       @Override
         protected void onStart() {
             if(toolbarTitle.equals("Help"))
                 AppManager.sc.trackNavigationEvent(Constants.SC_PAGE_TITLE_HELP, Constants.SC_SECTION_HELP);
@@ -51,9 +51,15 @@ public class WebViewActivity extends BaseActivity {
                 AppManager.sc.trackNavigationEvent(Constants.SC_PAGE_TITLE_ABOUT, Constants.SC_SECTION_ABOUT);
             else if(toolbarTitle.equals("User License Agreement"))
                 AppManager.sc.trackNavigationEvent(Constants.SC_PAGE_TITLE_EULA, Constants.SC_SECTION_EULA);
+           else if(toolbarTitle.equals("Terms and Abbreviations"))
+                AppManager.sc.trackNavigationEvent(Constants.SC_PAGE_TITLE_TERMS, Constants.SC_SECTION_TERMS);
+           else if(toolbarTitle.equals("Full Guidelines"))
+                AppManager.sc.trackNavigationEvent(Constants.SC_PAGE_TITLE_FULL_GUIDELINES, Constants.SC_SECTION_FULL_GUIDELINES);
+           else if(toolbarTitle.equals("Taking a Sexual History"))
+                AppManager.sc.trackNavigationEvent(Constants.SC_PAGE_TITLE_SEXUAL_HISTORY, Constants.SC_SECTION_SEXUAL_HISTORY);
             super.onStart();
 
-        }*/
+        }
 
         @Override
         protected void onResume() {

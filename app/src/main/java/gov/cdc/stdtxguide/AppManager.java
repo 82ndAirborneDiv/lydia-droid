@@ -23,7 +23,7 @@ public class AppManager extends Application {
     public static SharedPreferences pref;
     public static SharedPreferences.Editor editor;
     public static ConditionContent conditionContent;
-    //public static SiteCatalystController sc;
+    public static SiteCatalystController sc;
     public static PushManager pushManager;
     public static File sexualHistoryPdf;
 
@@ -38,23 +38,23 @@ public class AppManager extends Application {
         //Create global instance of ConditionContent to reduce duplicate processing
         conditionContent = new ConditionContent(getApplicationContext());
 
-        try {
-            copyPdfAssetsToStorage();
-        } catch (IOException e){
-            Log.e("copyFailed", "copyFailed", e);
-        }
+
         sexualHistoryPdf = new File(getFilesDir(), "sexualhistory.pdf");
 
-        if(pref.getBoolean(STDTxGuidePreferences.FIRST_LAUNCH, true)){
+        if(!pref.getBoolean(STDTxGuidePreferences.SET_INITIAL_SETTINGS, false)){
+            try {
+                copyPdfAssetsToStorage();
+            } catch (IOException e){
+                Log.e("copyFailed", "copyFailed", e);
+            }
             setDefaultPrefs();
 
-            editor.putBoolean(STDTxGuidePreferences.FIRST_LAUNCH, false).commit();
+            editor.putBoolean(STDTxGuidePreferences.SET_INITIAL_SETTINGS, true).commit();
         }
 
-        //TODO Uncomment and implement SiteCatalyst for each page
         // Create SiteCatalystController instance and log App Launch event.
-        //sc = new SiteCatalystController();
-        //sc.trackAppLaunchEvent();
+        sc = new SiteCatalystController();
+        sc.trackAppLaunchEvent();
 
 
 

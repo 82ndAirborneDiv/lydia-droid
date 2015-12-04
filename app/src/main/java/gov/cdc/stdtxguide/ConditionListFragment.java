@@ -71,8 +71,12 @@ public class ConditionListFragment extends Fragment{
         }
 
         if(pageTitle.equals("")){
+            AppManager.sc.trackContentBrowseEvent(Constants.SC_PAGE_TITLE_CONDITION_QUICK_PICK, Constants.SC_SECTION_CONDITIONS);
             title.setVisibility(View.GONE);
            divider.setVisibility(View.GONE);
+        }
+        else{
+            AppManager.sc.trackContentBrowseEvent(Constants.SC_PAGE_TITLE_CONDITION_QUICK_PICK, pageTitle);
         }
         return pageTitle;
     }
@@ -122,7 +126,6 @@ public class ConditionListFragment extends Fragment{
 
                         transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                         .replace(R.id.fragment_container, newFragment);
-
                         transaction.addToBackStack("Condition Pick Fragment");
                         transaction.commit();
                     }

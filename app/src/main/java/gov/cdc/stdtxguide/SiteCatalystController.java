@@ -83,6 +83,10 @@ public class SiteCatalystController {
         trackEvent(Constants.SC_EVENT_NAV_SECTION, pageTitle, section);
     }
 
+    public void trackContentBrowseEvent(String pageTitle, String section){
+        trackEvent(Constants.SC_EVENT_CONTENT_BROWSE, pageTitle, section);
+    }
+
     private void postSCEvent(String scString){
         AsyncHttpTask at = new AsyncHttpTask();
         at.execute(scString);
@@ -96,7 +100,7 @@ public class SiteCatalystController {
             try {
                 /* forming th java.net.URL object */
                 URL url = new URL(params[0]);
-                //Log.d("SC: ", "Received URL: " +url);
+                Log.d("SC URL: ", ""+url);
 
                 urlConnection = (HttpURLConnection) url.openConnection();
                 //Log.d("SC: ", "urlCon status: " +urlConnection);
@@ -104,7 +108,7 @@ public class SiteCatalystController {
                  /* optional request header */
                 urlConnection.setRequestProperty("Content-Type", "application/xml; charset=utf-8");
                 //urlConnection.connect();
-                //Log.d("SC response: ", "" +urlConnection.getResponseCode());
+                Log.d("SC response: ", "" +urlConnection.getResponseCode());
 
                 /* for Get request */
                 //urlConnection.setRequestMethod("GET");

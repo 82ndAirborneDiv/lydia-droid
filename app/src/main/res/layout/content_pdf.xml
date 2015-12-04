@@ -35,12 +35,14 @@
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#FFFFFF"
         android:measureWithLargestChild="true"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/btn_previous"
-            style="?android:attr/buttonBarButtonStyle"
+            android:textColor="@color/colorPrimary"
+            android:background="?attr/selectableItemBackground"
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:clickable="true"
@@ -52,7 +54,8 @@
 
         <Button
             android:id="@+id/btn_next"
-            style="?android:attr/buttonBarButtonStyle"
+            android:textColor="@color/colorPrimary"
+            android:background="?attr/selectableItemBackground"
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:layout_weight="1"
