@@ -26,7 +26,11 @@ public class SettingsActivity extends BaseActivity {
         SettingsFragment settingsFragment = new SettingsFragment();
         transaction.add(R.id.fragment_container, settingsFragment);
         transaction.commit();
-
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mNavigationView.setCheckedItem(R.id.nav_settings);
+    }
 }

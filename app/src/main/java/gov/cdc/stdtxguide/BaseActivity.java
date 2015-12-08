@@ -129,6 +129,11 @@ public class BaseActivity extends AppCompatActivity {
                                 intent.putExtra("toolbarTitle", "About");
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             }
+                            if (menuItem.getItemId() == R.id.nav_help) {
+                                intent = WebViewActivity.newIntent(getApplicationContext(), "help.html");
+                                intent.putExtra("toolbarTitle", "Help");
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            }
                             if (menuItem.getItemId() == R.id.nav_license_agreement) {
                                 intent = WebViewActivity.newIntent(getApplicationContext(), "eula.html");
                                 intent.putExtra("toolbarTitle", "User License Agreement");
