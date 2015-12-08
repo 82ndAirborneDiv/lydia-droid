@@ -18,7 +18,7 @@ import java.net.URLEncoder;
 public class SiteCatalystController {
     private String cdcServer = "http://tools.cdc.gov/metrics.aspx?";
     private String localServer = "http://172.16.4.77:8080/metrics?";
-    private String commonConstParams = "c8=Mobile+App&c51=Standalone&c52=MMWR+Express&c5=eng&channel=IIU";
+    private String commonConstParams = "c8=Mobile+App&c51=Standalone&c52=STD+Tx+Guide&c5=eng&channel=IIU";
     private String prodConstParams = "reportsuite=cdcsynd";
     private String debugConstParams = "reportsuite=devcdc";
     private HttpURLConnection urlConnection;
