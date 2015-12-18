@@ -14,6 +14,8 @@ public class Constants {
     public static final String SC_EVENT_SHARE_BUTTON = "Share:Button";
     public static final String SC_EVENT_AGREE_TO_EULA = "Eula:Button";
     public static final String SC_EVENT_CONTENT_BROWSE = "Content:Browse";
+    public static final String SC_EVENT_PUSH_NOTIFICATION_UNREGISTER = "Push-Notification:Unregister";
+    public static final String SC_EVENT_PUSH_NOTIFICATION_REGISTER = "Push-Notification:Register";
 
     public static final String SC_SECTION_CONDITIONS = "Conditions";
     public static final String SC_SECTION_CONDITION_DETAILS_TREATMENTS = "Condition Details - Treatments";
@@ -22,13 +24,13 @@ public class Constants {
     public static final String SC_SECTION_HELP = "Help";
     public static final String SC_SECTION_EULA = "EULA";
     public static final String SC_SECTION_SETTINGS = "Settings";
-    public static final String SC_SECTION_SETTINGS_PUSH_UNREG = "Push Notifications - Unregister";
-    public static final String SC_SECTION_SETTINGS_PUSH_REG = "Push Notifications - Register";
+
     public static final String SC_SECTION_FULL_GUIDELINES = "Full Guidelines";
     public static final String SC_SECTION_SEXUAL_HISTORY = "Sexual History";
     public static final String SC_SECTION_TERMS = "Terms";
 
     public static final String SC_PAGE_TITLE_LAUNCH = "STDTx Guide";
+    public static final String SC_PAGE_TITLE_ALL_CONDITIONS = "All Conditions";
     public static final String SC_PAGE_TITLE_CONDITION_QUICK_PICK = "Condition Quick Pick";
     public static final String SC_PAGE_TITLE_CONDITION_DETAILS = "Condition Details";
     public static final String SC_PAGE_TITLE_ABOUT = "About";

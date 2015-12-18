@@ -117,7 +117,6 @@ public class PDFActivity extends BaseActivity implements View.OnClickListener{
         // showing bitmap to an imageview
         pageImage.setImageBitmap(bitmap);
         updateUIData();
-        AppManager.sc.trackNavigationEvent("Page number: " +(index + 1), Constants.SC_SECTION_SEXUAL_HISTORY);
     }
 
     /**
@@ -127,11 +126,11 @@ public class PDFActivity extends BaseActivity implements View.OnClickListener{
         int index = currentPage.getIndex();
         int pageCount = pdfRenderer.getPageCount();
         buttonPrevious.setEnabled(0 != index);
-        if(!buttonPrevious.isEnabled()) buttonPrevious.setTextColor(Color.parseColor("#FFCDD2"));
-        else buttonPrevious.setTextColor(Color.parseColor("#F44336"));
+        if(!buttonPrevious.isEnabled()) buttonPrevious.setTextColor(Color.parseColor("#D0E4F9"));
+        else buttonPrevious.setTextColor(Color.parseColor("#155eab"));
         buttonNext.setEnabled(index + 1 < pageCount);
-        if(!buttonNext.isEnabled()) buttonNext.setTextColor(Color.parseColor("#FFCDD2"));
-        else buttonNext.setTextColor(Color.parseColor("#F44336"));
+        if(!buttonNext.isEnabled()) buttonNext.setTextColor(Color.parseColor("#D0E4F9"));
+        else buttonNext.setTextColor(Color.parseColor("#155eab"));
 
     }
 }

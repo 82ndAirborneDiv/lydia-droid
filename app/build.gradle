@@ -8,7 +8,7 @@ android {
         minSdkVersion 16
         targetSdkVersion 23
         versionCode 1
-        versionName '0.4.8'
+        versionName '0.4.9'
     }
     buildTypes {
         release {
@@ -33,5 +33,5 @@ dependencies {
     compile 'com.android.support:design:23.1.1'
     compile 'com.google.android.gms:play-services:8.3.0'
     compile 'com.squareup.retrofit:retrofit:1.9.0'
-    compile 'com.pushwoosh:pushwoosh:3.1.14'
+    compile 'com.pushwoosh:pushwoosh:3.2.0'
 }

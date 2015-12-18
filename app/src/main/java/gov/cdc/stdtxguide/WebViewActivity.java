@@ -1,8 +1,12 @@
 package gov.cdc.stdtxguide;
 
+import android.app.DownloadManager;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.webkit.JavascriptInterface;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 public class WebViewActivity extends BaseActivity {
@@ -35,6 +39,10 @@ public class WebViewActivity extends BaseActivity {
             Intent intent = getIntent();
             mWebPage = intent.getStringExtra(WEB_VIEW_PAGE);
             mWebView = (WebView)findViewById(R.id.webview);
+            WebSettings settings = mWebView.getSettings();
+            settings.setJavaScriptEnabled(true);
+            mWebView.addJavascriptInterface(new WebAppInterface(this), "Android");
+
             toolbarTitle = intent.getStringExtra("toolbarTitle");
             setActionBarTitle(toolbarTitle);
 
@@ -78,4 +86,36 @@ public class WebViewActivity extends BaseActivity {
 
             super.onResume();
         }
+
+    public class WebAppInterface{
+        Context context;
+
+        WebAppInterface(Context c){
+            context = c;
+        }
+        String version = getApplicationVersionName();
+
+        @JavascriptInterface
+        public String getVersion(){
+            return version;
+        }
+
+        @JavascriptInterface
+        public void getPDF(String url){
+                DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
+                request.allowScanningByMediaScanner();
+                request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+                DownloadManager dm = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
+                long enqueue = dm.enqueue(request);
+
+        }
+        @JavascriptInterface
+        public void openPDF(){
+            Intent intent = new Intent(getApplicationContext(), PDFActivity.class);
+            intent.putExtra("pdfName", "sexualhistory.pdf");
+            intent.putExtra("toolbarTitle", "Taking a Sexual History");
+            startActivity(intent);
+
+        }
+    }
 }

@@ -24,14 +24,20 @@
                 Guidelines from the CDC website, select one of the following options:
     
                 </p>
-                <p><a href="http://www.cdc.gov/std/tg2015/default.htm"
-                    rel="external" target="_blank">View as HTML in Browser</a>
-                </p>
-                <p><a href="http://www.cdc.gov/std/tg2015/tg-2015-print.pdf"
-                    rel="external" target="_blank">Download PDF</a>
-                </p>
+                <input type="button" style="background-color:#155eab; color:white; font-weight:bold; font-size:14px; padding:16px; border-radius: 5px" value="VIEW IN BROWSER" onclick="location.href='http://www.cdc.gov/std/tg2015/default.htm'"/>
+                <br>
+                <br>
+                <input type="button" style="background-color:#155eab; color:white; font-weight:bold; font-size:14px; padding:16px; border-radius: 5px" value="DOWNLOAD PDF" onclick="getPDF()"/>
+                <script type="text/javascript">
+                    function getPDF(){
+                        Android.getPDF("http://www.cdc.gov/std/tg2015/tg-2015-print.pdf");
+                    }
+                </script>*
+                <br>
+                <i>*This is a link for downloading the PDF File only.
+                    If you do not have a PDF Reader installed, it is recommended that you install one prior to downloading this file.
+                    Once the download is completed, the file will be displayed in the notification menu.</i>
                 </span></div>
-                
                 
                 </body>
                 </html>

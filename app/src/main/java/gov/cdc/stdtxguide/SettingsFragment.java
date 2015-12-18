@@ -1,5 +1,6 @@
 package gov.cdc.stdtxguide;
 
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -28,10 +29,22 @@ public class SettingsFragment extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     AppManager.editor.putBoolean(STDTxGuidePreferences.ALLOW_PUSH_NOTIFICATIONS, true).commit();
-                    AppManager.sc.trackNavigationEvent(Constants.SC_PAGE_TITLE_SETTINGS, Constants.SC_SECTION_SETTINGS_PUSH_REG);
+                    AppManager.sc.trackEvent(Constants.SC_EVENT_PUSH_NOTIFICATION_REGISTER, Constants.SC_PAGE_TITLE_SETTINGS, Constants.SC_SECTION_SETTINGS);
+                    new Handler().post(new Runnable() {
+                        @Override
+                        public void run() {
+                            AppManager.pushManager.registerForPushNotifications();
+                        }
+                    });
                 } else {
                     AppManager.editor.putBoolean(STDTxGuidePreferences.ALLOW_PUSH_NOTIFICATIONS, false).commit();
-                    AppManager.sc.trackNavigationEvent(Constants.SC_PAGE_TITLE_SETTINGS, Constants.SC_SECTION_SETTINGS_PUSH_UNREG);
+                    AppManager.sc.trackEvent(Constants.SC_EVENT_PUSH_NOTIFICATION_UNREGISTER, Constants.SC_PAGE_TITLE_SETTINGS, Constants.SC_SECTION_SETTINGS);
+                    new Handler().post(new Runnable() {
+                        @Override
+                        public void run() {
+                            AppManager.pushManager.unregisterForPushNotifications();
+                        }
+                    });
                 }
             }
         });

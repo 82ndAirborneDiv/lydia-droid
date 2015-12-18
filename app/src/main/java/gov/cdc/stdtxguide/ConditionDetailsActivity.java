@@ -48,7 +48,8 @@ public class ConditionDetailsActivity extends BaseActivity {
         viewPager.setAdapter(adapter);
 
         pageTitle = (TextView) findViewById(R.id.page_title);
-        pageTitle.setText(generatePageTitle());
+        title = generatePageTitle();
+        pageTitle.setText(title);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_host);
         tabLayout.setupWithViewPager(viewPager);

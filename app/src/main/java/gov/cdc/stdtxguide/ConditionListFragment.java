@@ -71,12 +71,12 @@ public class ConditionListFragment extends Fragment{
         }
 
         if(pageTitle.equals("")){
-            AppManager.sc.trackContentBrowseEvent(Constants.SC_PAGE_TITLE_CONDITION_QUICK_PICK, Constants.SC_SECTION_CONDITIONS);
+            AppManager.sc.trackNavigationEvent(Constants.SC_PAGE_TITLE_ALL_CONDITIONS, Constants.SC_SECTION_CONDITIONS);
             title.setVisibility(View.GONE);
-           divider.setVisibility(View.GONE);
+            divider.setVisibility(View.GONE);
         }
-        else{
-            AppManager.sc.trackContentBrowseEvent(Constants.SC_PAGE_TITLE_CONDITION_QUICK_PICK, pageTitle);
+        else {
+            AppManager.sc.trackNavigationEvent(pageTitle, Constants.SC_SECTION_CONDITIONS);
         }
         return pageTitle;
     }

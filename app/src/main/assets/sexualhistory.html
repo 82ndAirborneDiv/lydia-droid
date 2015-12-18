@@ -42,9 +42,17 @@
                     impact overall quality of life.
 
                 </p>
-                <p><a href="http://www.cdc.gov/std/treatment/sexualhistory.pdf"
-                      rel="external" target="_blank">Download PDF</a>
-                </p>
+
+               <input type="button" style="background-color:#155eab; color:white; font-weight:bold; font-size:14px; padding:16px; border-radius: 5px" value="DOWNLOAD PDF" onclick="getPDF()"/>
+                <script type="text/javascript">
+                    function getPDF(){
+                        Android.getPDF("http://www.cdc.gov/std/treatment/sexualhistory.pdf");
+                    }
+                </script>*
+                <br>
+                <i>*This is a link for downloading the PDF File only.
+                    If you do not have a PDF Reader installed, it is recommended that you install one prior to downloading this file.
+                    Once the download is completed, the file will be displayed in the notification menu.</i>
                 </span></div>
 
 

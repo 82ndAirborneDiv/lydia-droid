@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="pushwoosh-3.2.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.pushwoosh/pushwoosh/3.2.0/d7704c2abb5c51fd3114fb78963465d36b7640db/pushwoosh-3.2.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.pushwoosh/pushwoosh/3.2.0/66cb40118d5caae013822c85b9d7a2f020a10bbe/pushwoosh-3.2.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

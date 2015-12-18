@@ -91,13 +91,6 @@ public class BaseActivity extends AppCompatActivity {
                         if (menuItem.isChecked()) mDrawerLayout.closeDrawers();
                         else {
                             Intent intent = null;
-
-                            /*TODO uncomment and implement nav drawer items
-                            if (menuItem.getItemId() == R.id.nav_condition_quick_pick) {
-                                Intent intent = new Intent(getApplicationContext(), ConditionListActivity.class);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                startActivity(intent);
-                            }*/
                             if (menuItem.getItemId() == R.id.nav_condition_quick_pick) {
                                 intent = new Intent(getApplicationContext(), ConditionListActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -114,8 +107,7 @@ public class BaseActivity extends AppCompatActivity {
                             }
                             if (menuItem.getItemId() == R.id.nav_sexual_history) {
                                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                                    intent = new Intent(getApplicationContext(), PDFActivity.class);
-                                    intent.putExtra("pdfName", "sexualhistory.pdf");
+                                    intent = WebViewActivity.newIntent(getApplicationContext(), "sexualhistory-API21+.html");
                                     intent.putExtra("toolbarTitle", "Taking a Sexual History");
                                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 } else {
@@ -189,8 +181,7 @@ public class BaseActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        //TODO Implement menu if needed
-        //getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
@@ -204,6 +195,8 @@ public class BaseActivity extends AppCompatActivity {
             case android.R.id.home:
                 mDrawerLayout.openDrawer(GravityCompat.START);
                 return true;
+            case R.id.action_share:
+                share();
 
         }
 
@@ -230,6 +223,17 @@ public class BaseActivity extends AppCompatActivity {
     protected void setActionBarTitle(String title)
     {
         getSupportActionBar().setTitle(title);
+    }
+
+    public void share(){
+        AppManager.sc.trackEvent(Constants.SC_EVENT_SHARE_BUTTON, Constants.SC_PAGE_TITLE_CONDITION_DETAILS, Constants.SC_SECTION_CONDITIONS);
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        shareIntent.setAction(Intent.ACTION_SEND);
+        shareIntent.setType("text/plain");
+        shareIntent.putExtra(Intent.EXTRA_TEXT, "I'm using CDC's STD Tx Guide mobile app. "
+                + "Learn more about it here: \nhttp://www.cdc.gov/std/tg2015/default.htm");
+
+        startActivity(shareIntent);
     }
 
 }

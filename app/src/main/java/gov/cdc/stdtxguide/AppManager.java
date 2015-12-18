@@ -58,7 +58,6 @@ public class AppManager extends Application {
 
 
 
-/*   TODO Uncomment when ready to add pushwoosh support
         pushManager = PushManager.getInstance(this);
 
         //Register for Pushwoosh
@@ -71,7 +70,7 @@ public class AppManager extends Application {
                 //push notifications are not available or AndroidManifest.xml is not configured properly
             }
 
-        }*/
+        }
     }
     private void setDefaultPrefs(){
         editor.putBoolean(STDTxGuidePreferences.ALLOW_PUSH_NOTIFICATIONS, true);
