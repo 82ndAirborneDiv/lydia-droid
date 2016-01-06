@@ -2,6 +2,8 @@ package gov.cdc.stdtxguide;
 
 import android.app.Application;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.util.Log;
 
@@ -34,6 +36,9 @@ public class AppManager extends Application {
         //set global instance of Shared Prefs and instantiate global editor
         pref = getApplicationContext().getSharedPreferences(STDTxGuidePreferences.PREFS_NAME, 0);
         editor =  pref.edit();
+
+        //Set pref for app version name
+        editor.putString(STDTxGuidePreferences.APP_VERSION, getApplicationVersionName()).commit();
 
         //Create global instance of ConditionContent to reduce duplicate processing
         conditionContent = new ConditionContent(getApplicationContext());
@@ -101,6 +106,15 @@ public class AppManager extends Application {
             in.close();
 
         }
-}
+    }
+
+    public String getApplicationVersionName() {
+        PackageManager packageManager = getPackageManager();
+        try {
+            PackageInfo packageInfo = packageManager.getPackageInfo(getPackageName(), 0);
+            return packageInfo.versionName;
+        } catch (PackageManager.NameNotFoundException ex) {} catch(Exception e){}
+        return "";
+    }
 }
 

@@ -41,8 +41,6 @@ public class ConditionDetailsActivity extends BaseActivity {
         breadcrumbs = getIntent().getStringArrayListExtra("breadcrumbs");
         title = getIntent().getStringExtra("title");
 
-        AppManager.sc.trackNavigationEvent(title, Constants.SC_SECTION_CONDITIONS);
-
         viewPager = (ViewPager) findViewById(R.id.pager);
         ContentPagerAdapter adapter = new ContentPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
@@ -50,6 +48,8 @@ public class ConditionDetailsActivity extends BaseActivity {
         pageTitle = (TextView) findViewById(R.id.page_title);
         title = generatePageTitle();
         pageTitle.setText(title);
+
+        AppManager.sc.trackNavigationEvent(title, Constants.SC_SECTION_CONDITIONS);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_host);
         tabLayout.setupWithViewPager(viewPager);
