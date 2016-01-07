@@ -35,6 +35,9 @@
         <meta-data
             android:name="PW_PROJECT_ID"
             android:value="A368319224253"/>
+        <meta-data
+            android:name="PW_LOG_LEVEL"
+            android:value="ERROR" />
 
         <activity android:name="com.pushwoosh.richpages.RichPageActivity"/>
         <activity android:name="com.pushwoosh.MessageActivity"/>

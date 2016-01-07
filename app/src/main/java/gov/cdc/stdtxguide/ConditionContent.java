@@ -126,26 +126,26 @@ public class ConditionContent {
             String name = reader.nextName();
             if (name.equals("condition_id")) {
                 id = reader.nextInt();
-                Log.d("ConditionContent", "For JSON key id value = " + Integer.toString(id));
+                //Log.d("ConditionContent", "For JSON key id value = " + Integer.toString(id));
             } else if (name.equals("parent")) {
                 if (reader.peek() == JsonToken.NULL)
                     reader.skipValue();
                 else {
                     parentId = reader.nextInt();
-                    Log.d("ConditionContent", "For JSON key parent value = " + Integer.toString(parentId));
+                    //Log.d("ConditionContent", "For JSON key parent value = " + Integer.toString(parentId));
                 }
             } else if (name.equals("text")) {
                 text = reader.nextString();
-                Log.d("ConditionContent", "For JSON key text value = " + text);
+                //Log.d("ConditionContent", "For JSON key text value = " + text);
             } else if (name.equals("regimensPage")) {
                 regimensPage = reader.nextString();
-                Log.d("ConditionContent", "For JSON key regimensPage value = " + regimensPage);
+                //Log.d("ConditionContent", "For JSON key regimensPage value = " + regimensPage);
             } else if (name.equals("dxtxPage")) {
                 dxtxPage = reader.nextString();
-                Log.d("ConditionContent", "For JSON key dxtxPage value = " + dxtxPage);
+                //Log.d("ConditionContent", "For JSON key dxtxPage value = " + dxtxPage);
             } else if (name.equals("hasChildren")) {
                 hasChildren = reader.nextBoolean();
-                Log.d("ConditionContent", "For JSON key hasChildren value = " + hasChildren);
+                //Log.d("ConditionContent", "For JSON key hasChildren value = " + hasChildren);
             } else if (name.equals("children") && reader.peek() != JsonToken.NULL) {
                 childrenConditions = readChildrenArray(reader);
             } else if (name.equals("breadcrumbs") && reader.peek() != JsonToken.NULL) {
@@ -167,7 +167,7 @@ public class ConditionContent {
         reader.beginArray();
         while (reader.hasNext()) {
 
-            Log.d("ConditionContent", "Making recursive readCondition() call for children.");
+            //Log.d("ConditionContent", "Making recursive readCondition() call for children.");
             childrenConditions.add(readCondition(reader));
         }
         reader.endArray();
@@ -207,7 +207,7 @@ public class ConditionContent {
         Condition c;
         for (i = 0; i < this.allConditions.size(); i++) {
             c = this.allConditions.get(i);
-            Log.d("ConditionContent", "Condition id = " + Integer.toString(c.id) + " is at index = " + Integer.toString(i));
+            //Log.d("ConditionContent", "Condition id = " + Integer.toString(c.id) + " is at index = " + Integer.toString(i));
         }
     }
 

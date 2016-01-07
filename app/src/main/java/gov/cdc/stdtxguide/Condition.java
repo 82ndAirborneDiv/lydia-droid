@@ -44,7 +44,7 @@ public class Condition {
                     childrenConditionIds.add(c.id);
                 }
         }
-        Log.d("Condition", "Condition object created with name = " + title + " has " + String.valueOf(numberOfChildren()) + " children.");
+        //Log.d("Condition", "Condition object created with name = " + title + " has " + String.valueOf(numberOfChildren()) + " children.");
 
     }
 
