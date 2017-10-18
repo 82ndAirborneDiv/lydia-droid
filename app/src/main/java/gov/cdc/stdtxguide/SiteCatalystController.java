@@ -28,7 +28,7 @@ public class SiteCatalystController {
         String sectionInfo, appVersion, server, appInfoParams, pageName;
         String deviceOnline, constParams, metricUrl, eventInfo;
 
-        Boolean debug = false;
+        Boolean debug = true;
         Boolean debugLocal = false;
 
         server =debugLocal ? localServer : cdcServer;
@@ -100,7 +100,7 @@ public class SiteCatalystController {
             try {
                 /* forming th java.net.URL object */
                 URL url = new URL(params[0]);
-                //Log.d("SC URL: ", ""+url);
+                Log.d("SC URL: ", ""+url);
 
                 urlConnection = (HttpURLConnection) url.openConnection();
                 //Log.d("SC: ", "urlCon status: " +urlConnection);
@@ -112,7 +112,7 @@ public class SiteCatalystController {
                 int responseCode = urlConnection.getResponseCode();
 
                 //Log response code
-                //Log.d("SC response: ", "" +responseCode);
+                Log.d("SC response: ", "" +responseCode);
 
             } catch (Exception e) {
                 Log.d("SC:", e.getLocalizedMessage());

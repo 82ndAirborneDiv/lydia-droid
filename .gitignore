@@ -1,3 +1,4 @@
+
 .DS_Store
 realm_version_check.timestamp
 # Built application files
@@ -79,3 +80,4 @@ atlassian-ide-plugin.xml
 com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
+app/google-services.json

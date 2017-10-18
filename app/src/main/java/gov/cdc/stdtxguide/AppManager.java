@@ -6,9 +6,8 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.util.Log;
-
-import com.pushwoosh.PushManager;
-
+import com.pushwoosh.Pushwoosh;
+import com.pushwoosh.notification.PushwooshNotificationSettings;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -26,7 +25,7 @@ public class AppManager extends Application {
     public static SharedPreferences.Editor editor;
     public static ConditionContent conditionContent;
     public static SiteCatalystController sc;
-    public static PushManager pushManager;
+    public static Pushwoosh pushManager;
     public static File sexualHistoryPdf;
 
     @Override
@@ -63,18 +62,14 @@ public class AppManager extends Application {
 
 
 
-        pushManager = PushManager.getInstance(this);
+        pushManager = Pushwoosh.getInstance();
 
         //Register for Pushwoosh
         if (pref.getBoolean(STDTxGuidePreferences.ALLOW_PUSH_NOTIFICATIONS, true)) {
             //Register for push!
             pushManager.registerForPushNotifications();
-            try {
-                pushManager.onStartup(this);
-            } catch (Exception e) {
-                //push notifications are not available or AndroidManifest.xml is not configured properly
-            }
-
+            PushwooshNotificationSettings.setMultiNotificationMode(true);
+            PushwooshNotificationSettings.setNotificationChannelName("STD DEV");
         }
     }
     private void setDefaultPrefs(){
@@ -102,9 +97,12 @@ public class AppManager extends Application {
             Log.e("copyPDF", "Failed to copy asset file", e);
         }
         finally {
-            out.close();
-            in.close();
-
+            if(out != null) {
+                out.close();
+            }
+            if(in != null) {
+                in.close();
+            }
         }
     }
 
