@@ -1,3 +1,5 @@
+# Firebase config file - This file can be downloaded in the Firebase console.
+app/google-services.json
 
 .DS_Store
 realm_version_check.timestamp
@@ -80,4 +82,3 @@ atlassian-ide-plugin.xml
 com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
-app/google-services.json
