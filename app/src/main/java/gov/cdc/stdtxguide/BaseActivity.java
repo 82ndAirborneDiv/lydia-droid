@@ -231,7 +231,7 @@ public class BaseActivity extends AppCompatActivity {
         shareIntent.setAction(Intent.ACTION_SEND);
         shareIntent.setType("text/plain");
         shareIntent.putExtra(Intent.EXTRA_TEXT, "I'm using CDC's STD Tx Guide mobile app. "
-                + "Learn more about it here: \nhttp://www.cdc.gov/std/tg2015/default.htm");
+                + "Learn more about it here: \nhttps://www.cdc.gov/std/tg2015/default.htm");
 
         startActivity(shareIntent);
     }
