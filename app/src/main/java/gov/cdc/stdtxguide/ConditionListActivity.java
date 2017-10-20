@@ -14,7 +14,6 @@ public class ConditionListActivity extends BaseActivity {
         setupToolbar();
         initNavigationDrawer();
         addConditionListFragment();
-        addConditionListFragment();
     }
 
     @Override
