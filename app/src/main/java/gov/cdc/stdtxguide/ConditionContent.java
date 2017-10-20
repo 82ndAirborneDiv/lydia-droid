@@ -20,19 +20,14 @@ import java.util.Stack;
 public class ConditionContent {
 
     public static final String CONTENT_MAP_FILENAME = "content/condition-content-map.txt";
-    private Context context;
     private Condition rootCondition;
     private Condition currCondition;
     private List<Condition> allConditions;
-    private Stack<Condition> conditionStack;
 
     public ConditionContent(Context context) {
-
-        this.context = context;
         this.allConditions = new ArrayList<Condition>();
-        this.conditionStack = new Stack<Condition>();
 
-        InputStream stream = readContentMapFromFile();
+        InputStream stream = readContentMapFromFile(context);
         this.rootCondition = readJsonStream(stream);
 
         dumpIndex();
@@ -45,13 +40,13 @@ public class ConditionContent {
         currCondition = rootCondition;
     }
 
-    private InputStream readContentMapFromFile() {
+    private InputStream readContentMapFromFile(Context context) {
 
         InputStream stream = null;
 
         try {
 
-            AssetManager am = this.context.getAssets();
+            AssetManager am = context.getAssets();
             stream = am.open(CONTENT_MAP_FILENAME);
 
         } catch (IOException ex) {

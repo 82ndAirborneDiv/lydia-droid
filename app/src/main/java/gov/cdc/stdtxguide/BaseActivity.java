@@ -24,7 +24,7 @@ import android.view.View;
  * Copyright (c) 2015 Informatics Research and Development Lab. All rights reserved.
  */
 
-public class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity {
 
     protected ActionBarDrawerToggle mDrawerToggle;
     protected DrawerLayout mDrawerLayout;
@@ -78,7 +78,7 @@ public class BaseActivity extends AppCompatActivity {
 
             }
         };
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
+        mDrawerLayout.addDrawerListener(mDrawerToggle);
 
     }
 

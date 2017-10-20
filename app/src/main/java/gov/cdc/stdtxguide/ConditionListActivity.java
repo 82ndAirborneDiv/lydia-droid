@@ -3,10 +3,10 @@ package gov.cdc.stdtxguide;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.Gravity;
 
 public class ConditionListActivity extends BaseActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -14,13 +14,14 @@ public class ConditionListActivity extends BaseActivity {
         setupToolbar();
         initNavigationDrawer();
         addConditionListFragment();
+        addConditionListFragment();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
         if(!AppManager.pref.getBoolean(STDTxGuidePreferences.DISPLAY_NAV_DRAWER_ON_FIRST_LAUNCH, false)){
-            mDrawerLayout.openDrawer(Gravity.LEFT);
+            mDrawerLayout.openDrawer(Gravity.START);
             AppManager.editor.putBoolean(STDTxGuidePreferences.DISPLAY_NAV_DRAWER_ON_FIRST_LAUNCH, true).commit();
         }
     }
@@ -38,7 +39,7 @@ public class ConditionListActivity extends BaseActivity {
                 ConditionListFragment
                         .newInstance(AppManager.conditionContent.getChildContentTitles(),
                                 AppManager.conditionContent.getChildContentIds());
-        transaction.add(R.id.fragment_container, fragment);
+        transaction.replace(R.id.fragment_container, fragment, "Condition Pick Fragment");
         transaction.commit();
     }
 }

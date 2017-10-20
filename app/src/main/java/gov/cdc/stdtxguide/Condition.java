@@ -54,9 +54,7 @@ public class Condition {
 
     public boolean isRootCondition() {
 
-        if (id == 0)
-            return true;
-        return false;
+        return id == 0;
     }
 
 

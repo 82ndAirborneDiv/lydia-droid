@@ -11,9 +11,9 @@
         android:id="@+id/condition_item_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Condition"
+        android:text="@string/condition"
         android:transitionName="@string/title_transition"
         android:layout_centerVertical="true"
         android:textColor="@color/primaryText"
-        android:textSize="18dp"/>
+        android:textSize="18sp"/>
 </RelativeLayout>

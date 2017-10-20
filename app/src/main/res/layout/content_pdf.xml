@@ -48,7 +48,7 @@
             android:clickable="true"
             android:focusable="true"
             android:layout_weight="1"
-            android:text="Previous"
+            android:text="@string/previous"
             android:textSize="22sp"
             android:textStyle="bold" />
 
@@ -61,7 +61,7 @@
             android:layout_weight="1"
             android:clickable="true"
             android:focusable="true"
-            android:text="Next"
+            android:text="@string/next"
             android:textSize="22sp"
             android:textStyle="bold" />
     </LinearLayout>
