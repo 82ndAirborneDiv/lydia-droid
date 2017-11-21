@@ -48,35 +48,51 @@ public class WebViewActivity extends BaseActivity {
 
             mWebView.loadUrl("file:///android_asset/" + mWebPage);
 
-            if(toolbarTitle.equals("Help"))
-                AppManager.sc.trackNavigationEvent(Constants.SC_PAGE_TITLE_HELP, Constants.SC_SECTION_HELP);
-            else if(toolbarTitle.equals("About"))
-                AppManager.sc.trackNavigationEvent(Constants.SC_PAGE_TITLE_ABOUT, Constants.SC_SECTION_ABOUT);
-            else if(toolbarTitle.equals("User License Agreement"))
-                AppManager.sc.trackNavigationEvent(Constants.SC_PAGE_TITLE_EULA, Constants.SC_SECTION_EULA);
-            else if(toolbarTitle.equals("Terms and Abbreviations"))
-                AppManager.sc.trackNavigationEvent(Constants.SC_PAGE_TITLE_TERMS, Constants.SC_SECTION_TERMS);
-            else if(toolbarTitle.equals("Full Guidelines"))
-                AppManager.sc.trackNavigationEvent(Constants.SC_PAGE_TITLE_FULL_GUIDELINES, Constants.SC_SECTION_FULL_GUIDELINES);
-            else if(toolbarTitle.equals("Taking a Sexual History"))
-                AppManager.sc.trackNavigationEvent(Constants.SC_PAGE_TITLE_SEXUAL_HISTORY, Constants.SC_SECTION_SEXUAL_HISTORY);
+            switch (toolbarTitle) {
+                case "Help":
+                    AppManager.sc.trackNavigationEvent(Constants.SC_PAGE_TITLE_HELP, Constants.SC_SECTION_HELP);
+                    break;
+                case "About":
+                    AppManager.sc.trackNavigationEvent(Constants.SC_PAGE_TITLE_ABOUT, Constants.SC_SECTION_ABOUT);
+                    break;
+                case "User License Agreement":
+                    AppManager.sc.trackNavigationEvent(Constants.SC_PAGE_TITLE_EULA, Constants.SC_SECTION_EULA);
+                    break;
+                case "Terms and Abbreviations":
+                    AppManager.sc.trackNavigationEvent(Constants.SC_PAGE_TITLE_TERMS, Constants.SC_SECTION_TERMS);
+                    break;
+                case "Full Guidelines":
+                    AppManager.sc.trackNavigationEvent(Constants.SC_PAGE_TITLE_FULL_GUIDELINES, Constants.SC_SECTION_FULL_GUIDELINES);
+                    break;
+                case "Taking a Sexual History":
+                    AppManager.sc.trackNavigationEvent(Constants.SC_PAGE_TITLE_SEXUAL_HISTORY, Constants.SC_SECTION_SEXUAL_HISTORY);
+                    break;
+            }
 
         }
 
         @Override
         protected void onResume() {
-            if(toolbarTitle.equals("Help"))
-                mNavigationView.setCheckedItem(R.id.nav_help);
-            else if(toolbarTitle.equals("About"))
-                mNavigationView.setCheckedItem(R.id.nav_about_us);
-            else if(toolbarTitle.equals("User License Agreement"))
-                mNavigationView.setCheckedItem(R.id.nav_license_agreement);
-            else if(toolbarTitle.equals("Terms and Abbreviations"))
-                mNavigationView.setCheckedItem(R.id.nav_terms_and_abbreviations);
-            else if(toolbarTitle.equals("Full Guidelines"))
-                mNavigationView.setCheckedItem(R.id.nav_full_guidelines);
-            else if(toolbarTitle.equals("Taking a Sexual History"))
-                mNavigationView.setCheckedItem(R.id.nav_sexual_history);
+            switch (toolbarTitle) {
+                case "Help":
+                    mNavigationView.setCheckedItem(R.id.nav_help);
+                    break;
+                case "About":
+                    mNavigationView.setCheckedItem(R.id.nav_about_us);
+                    break;
+                case "User License Agreement":
+                    mNavigationView.setCheckedItem(R.id.nav_license_agreement);
+                    break;
+                case "Terms and Abbreviations":
+                    mNavigationView.setCheckedItem(R.id.nav_terms_and_abbreviations);
+                    break;
+                case "Full Guidelines":
+                    mNavigationView.setCheckedItem(R.id.nav_full_guidelines);
+                    break;
+                case "Taking a Sexual History":
+                    mNavigationView.setCheckedItem(R.id.nav_sexual_history);
+                    break;
+            }
 
             super.onResume();
         }

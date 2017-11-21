@@ -29,13 +29,22 @@
         android:supportsRtl="false"
         android:theme="@style/AppCompatTheme">
 
-        <meta-data android:name="firebase_analytics_collection_enabled" android:value="false" />
-        <meta-data android:name="firebase_analytics_collection_deactivated" android:value="true" />
-
         <!-- Pushwoosh -->
-        <meta-data android:name="com.pushwoosh.appid" android:value="06BA3-CC997" />
-        <meta-data android:name="com.pushwoosh.senderid" android:value="@string/fcm_sender_id" />
+        <meta-data android:name="com.pushwoosh.appid" android:value="C2A2A-C5E3E" />
+        <meta-data android:name="com.pushwoosh.senderid" android:value="A711601273042" />
         <meta-data android:name="com.pushwoosh.log_level" android:value="ERROR" />
+
+        <activity
+            android:name="com.pushwoosh.DeepLinkActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="pw-C2A2A-C5E3E" />
+            </intent-filter>
+        </activity>
 
         <activity
             android:name=".ConditionListActivity"
