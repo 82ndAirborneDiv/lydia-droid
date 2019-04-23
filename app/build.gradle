@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion '26.0.2'
+    buildToolsVersion '28.0.3'
     defaultConfig {
         applicationId 'gov.cdc.stdtxguide'
         minSdkVersion 19
@@ -25,14 +25,14 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
     // You must install or update the Support Repository through the SDK manager to use this dependency.
-    compile 'com.android.support:support-v4:26.1.0'
-    compile 'com.android.support:appcompat-v7:26.1.0'
-    compile 'com.android.support:recyclerview-v7:26.1.0'
-    compile 'com.android.support:design:26.1.0'
+    implementation 'com.android.support:support-v4:26.1.0'
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support:recyclerview-v7:26.1.0'
+    implementation 'com.android.support:design:26.1.0'
 
-    compile 'com.pushwoosh:pushwoosh:5.4.1'
-    compile 'com.pushwoosh:pushwoosh-gcm:5.4.1'
-    compile 'com.google.android.gms:play-services-gcm:11.4.2'
+    implementation 'com.pushwoosh:pushwoosh:5.4.1'
+    implementation 'com.pushwoosh:pushwoosh-gcm:5.4.1'
+    implementation 'com.google.android.gms:play-services-gcm:11.4.2'
 }
