@@ -8,7 +8,7 @@ android {
         applicationId 'gov.cdc.stdtxguide'
         minSdkVersion 19
         targetSdkVersion 26
-        versionCode 2
+        versionCode 3
         versionName '1.2.1.1'
     }
     buildTypes {
