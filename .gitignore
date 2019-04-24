@@ -80,3 +80,6 @@ com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 /app/release/
+
+## Firebase config
+/app/google-services.json
