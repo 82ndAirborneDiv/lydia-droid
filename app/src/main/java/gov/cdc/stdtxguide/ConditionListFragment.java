@@ -109,10 +109,7 @@ public class ConditionListFragment extends Fragment{
                 public void onClick(View v) {
                     if(condition.numberOfChildren()==0){
                         Intent intent = ConditionDetailsActivity.newIntent(getContext(), condition);
-                        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(),
-                                holder.conditionTitle, transitionName);
-                        ActivityCompat.startActivity(getActivity(), intent, options.toBundle());
-                        //startActivity(intent);
+                        ActivityCompat.startActivity(getActivity(), intent, null);
                      } else {
 
 
